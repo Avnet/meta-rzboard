@@ -7,7 +7,7 @@ COMPATIBLE_MACHINE = "(smarc-rzg2l|rzg2l-dev|smarc-rzv2l|rzv2l-dev|rzboard)"
 
 KERNEL_URL = " ${RZBOARD_GIT_HOST_MIRROR}/renesas-linux-cip.git"
 BRANCH = "rzboard_v2l_v4.19"
-SRCREV = "262750da299994073e5b9e002eb75661dee628b6"
+SRCREV = "${AUTOREV}"
 
 SRC_URI = "${KERNEL_URL};protocol=http;nocheckout=1;branch=${BRANCH};${RZBOARD_GIT_USER}"
 
