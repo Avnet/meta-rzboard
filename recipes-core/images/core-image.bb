@@ -1,14 +1,14 @@
 SUMMARY = "Yocto Linux System Image for Avnet RzBoard"
 LICENSE = "MIT"
 
-inherit core-image
+inherit core-image features_check
 
-# Environment setup, support building kernel modules with kernel src in SDK
-export KERNELSRC="$SDKTARGETSYSROOT/usr/src/kernel"
-export KERNELDIR="$SDKTARGETSYSROOT/usr/src/kernel"
-export HOST_EXTRACFLAGS="-I${OECORE_NATIVE_SYSROOT}/usr/include/ -L${OECORE_NATIVE_SYSROOT}/usr/lib"
+REQUIRED_DISTRO_FEATURES = "wayland"
 
-TOOLCHAIN_TARGET_TASK += " libusb1-dev alsa-dev"
+CORE_IMAGE_BASE_INSTALL += "weston weston-init"
+CORE_IMAGE_BASE_INSTALL += "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'weston-xwayland matchbox-terminal', '', d)}"
+
+IMAGE_INSTALL_append = " opencv opencv-dev "
 
 # Basic packages
 IMAGE_INSTALL_append = " \
@@ -57,6 +57,11 @@ IMAGE_INSTALL_append = " \
 	bluez5 \
 	rzboard-firmware \
 	wlan-conf \
+"
+
+IMAGE_INSTALL_append = " \
+                packagegroup-multimedia-libs \
+                packagegroup-multimedia-kernel-modules \
 "
 
 IMAGE_INSTALL_append = " \

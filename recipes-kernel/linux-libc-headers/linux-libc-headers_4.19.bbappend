@@ -1,0 +1,5 @@
+KERNEL_URL = " ${RZBOARD_GIT_HOST_MIRROR}/renesas-linux-cip.git"
+BRANCH = "rzboard_v2l_v4.19"
+SRCREV = "${AUTOREV}"
+
+SRC_URI = "${KERNEL_URL};${RZBOARD_GIT_PROTOCOL};branch=${BRANCH};${RZBOARD_GIT_USER}"

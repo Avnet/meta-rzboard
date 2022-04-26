@@ -5,11 +5,11 @@ require recipes-kernel/linux/linux-yocto.inc
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}/:"
 COMPATIBLE_MACHINE = "(smarc-rzg2l|rzg2l-dev|smarc-rzv2l|rzv2l-dev|rzboard)"
 
-KERNEL_URL = " ${RZBOARD_GIT_HOST_MIRROR}/renesas-linux-cip.git"
+KERNEL_URL = "${RZBOARD_GIT_HOST_MIRROR}/renesas-linux-cip.git"
 BRANCH = "rzboard_v2l_v4.19"
 SRCREV = "${AUTOREV}"
 
-SRC_URI = "${KERNEL_URL};protocol=http;nocheckout=1;branch=${BRANCH};${RZBOARD_GIT_USER}"
+SRC_URI = "${KERNEL_URL};${RZBOARD_GIT_PROTOCOL};nocheckout=1;branch=${BRANCH};${RZBOARD_GIT_USER}"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
 LINUX_VERSION ?= "4.19.165"
