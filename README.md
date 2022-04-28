@@ -105,11 +105,11 @@ meta-gplv2  meta-openembedded  meta-rz-features  meta-rzboard  meta-rzv  poky
 *  **Edit build configuration**
 
 ```
-$ mkdir ~/yocto_rzboard/build
+$ mkdir -p ~/yocto_rzboard/build/conf
 $ cd ~/yocto_rzboard/build
 $ cp ../meta-rzboard/conf/rzboard/* conf/
 $ ls conf/
-bblayers.conf  local.conf  templateconf.cfg
+bblayers.conf  local.conf
 ```
 
 Users can edit the file ***bblayers.conf, local.conf***  for their own purpose. If you want to change the git
