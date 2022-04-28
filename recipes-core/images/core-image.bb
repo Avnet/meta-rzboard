@@ -40,6 +40,7 @@ IMAGE_INSTALL_append = " \
     minicom \
     memtester \
     alsa-utils \
+    alsa-state \
     libdrm \
     libdrm-tests \
     yavta \
