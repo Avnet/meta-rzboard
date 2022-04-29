@@ -88,5 +88,8 @@ inherit extrausers
 EXTRA_USERS_PARAMS = "\
 	usermod -P avnet root; \
 "
-# additional free disk space created in Kbytes
-IMAGE_ROOTFS_EXTRA_SPACE = "512000"
+# rootfs partition space created in Kbytes
+IMAGE_ROOTFS_SIZE = "1228800"
+
+# the alignment of the root filesystem image in kilobytes.
+IMAGE_ROOTFS_ALIGNMENT = "4"
