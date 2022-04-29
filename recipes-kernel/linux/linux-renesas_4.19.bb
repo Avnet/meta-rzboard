@@ -35,3 +35,25 @@ do_kernel_configme[depends] += "bc-native:do_populate_sysroot bison-native:do_po
 
 # Fix error: openssl/bio.h: No such file or directory
 DEPENDS += "openssl-native"
+
+# support to build dtbo
+KERNEL_DTC_FLAGS = "-@"
+KERNEL_DEVICETREE_OVERLAY ?= ""
+
+do_compile_prepend() {
+    if [ -n "${KERNEL_DTC_FLAGS}" ]; then
+       export DTC_FLAGS="${KERNEL_DTC_FLAGS}"
+    fi
+}
+
+do_compile_append() {
+    for dtbf in ${KERNEL_DEVICETREE_OVERLAY}; do
+        dtb=`normalize_dtb "$dtbf"`
+        oe_runmake $dtb CC="${KERNEL_CC} $cc_extra " LD="${KERNEL_LD}" ${KERNEL_EXTRA_ARGS}
+    done
+}
+
+do_deploy_append(){
+   install -d ${DEPLOYDIR}/overlays
+   cp ${B}/arch/arm64/boot/dts/renesas/overlays/* ${DEPLOYDIR}/overlays
+}
