@@ -93,6 +93,18 @@ $ git clone http://192.168.2.100/renesas/meta-openamp.git -b dunfell_rzv2l_bsp_v
 $ git clone http://192.168.2.100/renesas/meta-rzv2l-freertos.git -b dunfell_rzv2l_bsp_v100
 ```
 
+* **Download meta-drpai**
+
+```bash
+$ git clone http://192.168.2.100/renesas/meta-drpai.git -b dunfell_rzv2l_bsp_v100
+```
+
+* **Download meta-isp**
+
+```bash
+$ git clone http://192.168.2.100/renesas/meta-isp.git -b dunfell_rzv2l_bsp_v100
+```
+
 * **Download meta-rzboard**
 
 ```bash
@@ -116,7 +128,7 @@ meta-gplv2  meta-openembedded  meta-rz-features  meta-rzboard  meta-rzv  poky
 
 *  **Edit build configuration**
 
-```
+```bash
 $ mkdir -p ~/yocto_rzboard/build/conf
 $ cd ~/yocto_rzboard/build
 $ cp ../meta-rzboard/conf/rzboard/* conf/
@@ -127,7 +139,7 @@ bblayers.conf  local.conf
 Users can edit the file ***bblayers.conf, local.conf***  for their own purpose. If you want to change the git
 repository address and account information for RzBoard, please set as below in **conf/local.conf** :
 
-```
+```bash
 RZBOARD_GIT_HOST_MIRROR = "git://192.168.2.100/renesas"
 RZBOARD_GIT_PROTOCOL = "protocol=http"
 RZBOARD_GIT_USER = "user=username:password"
@@ -135,7 +147,7 @@ RZBOARD_GIT_USER = "user=username:password"
 
 And user can specify the download directory which store all the packages of yocto, set in **conf/local.conf** :
 
-```
+```bash
 DL_DIR ?= "${HOME}/downloads"
 ```
 
