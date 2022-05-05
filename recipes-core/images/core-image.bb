@@ -58,6 +58,9 @@ IMAGE_INSTALL_append = " \
 	bluez5 \
 	rzboard-firmware \
 	wlan-conf \
+	libmetal \
+	open-amp \
+	rpmsg-sample \
 "
 
 IMAGE_INSTALL_append = " \
