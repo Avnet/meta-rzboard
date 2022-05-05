@@ -4,7 +4,7 @@ COMPATIBLE_MACHINE = "(smarc-rzg2l|rzg2l-dev|smarc-rzv2l|rzv2l-dev|rzboard)"
 
 URL = "${RZBOARD_GIT_HOST_MIRROR}/trusted-firmware-a.git"
 BRANCH = "rzboard_v2l"
-SRCREV = "10008ce8bf9757505740a930358a25eb60f0571b"
+SRCREV = "${AUTOREV}"
 
 SRC_URI += "${URL};protocol=http;branch=${BRANCH};${RZBOARD_GIT_USER}"
 
