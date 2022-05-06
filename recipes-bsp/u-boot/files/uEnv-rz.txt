@@ -2,6 +2,5 @@
 
 fdtfile=rzboard.dtb
 enable_overlay_disp=hdmi
-enable_overlay_gpio=1
 #fdt_extra_overlays=1.dtbo 2.dtbo 3.dtbo
 #ethaddr=aa:bb:cc:aa:bb:cc

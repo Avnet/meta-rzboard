@@ -14,9 +14,22 @@ Refer to the following description for different boards.
 | enable_overlay_disp   |  'hdmi'      |  rzboard-hdmi.dtbo
 |                       |  'mipi'      |  rzboard-mipi.dtbo
 |-----------------------|--------------|------------------------------
-| enable_overlay_gpio   | '1' or 'yes' |  rzboard-ext-gpio.dtbo
+| enable_overlay_camera |  'ov5640'    |  rzboard-ov5640.dtbo
+|                       |  'as0260'    |  rzboard-as0260.dtbo
+|-----------------------|--------------|------------------------------
+| enable_overlay_adc    | '1' or 'yes' |  rzboard-adc.dtbo
+|-----------------------|--------------|------------------------------
+| enable_overlay_can    | '1' or 'yes' |  rzboard-can.dtbo
+|-----------------------|--------------|------------------------------
+| enable_overlay_cm33   | '1' or 'yes' |  rzboard-cm33.dtbo
+|-----------------------|--------------|------------------------------
+| enable_overlay_audio  | '1' or 'yes' |  rzboard-lite-audio.dtbo
 |-----------------------|--------------|------------------------------
 | enable_overlay_i2c    | '1' or 'yes' |  rzboard-ext-i2c.dtbo
+|-----------------------|--------------|------------------------------
+| enable_overlay_spi    | '1' or 'yes' |  rzboard-ext-spi.dtbo
+|-----------------------|--------------|------------------------------
+| enable_overlay_uart2  | '1' or 'yes' |  rzboard-ext-uart2.dtbo
 |---------------------------------------------------------------------
 | fdtfile              : is a base dtb file, should be set rzboard.dtb
 |---------------------------------------------------------------------
@@ -28,6 +41,5 @@ Refer to the following description for different boards.
 default setting:
     fdtfile=rzboard.dtb
     enable_overlay_disp=hdmi
-    enable_overlay_gpio=1
     #fdt_extra_overlays=1.dtbo 2.dtbo 3.dtbo
     #ethaddr=aa:bb:cc:aa:bb:cc
