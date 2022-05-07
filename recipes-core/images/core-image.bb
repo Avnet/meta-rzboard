@@ -61,6 +61,7 @@ IMAGE_INSTALL_append = " \
 	libmetal \
 	open-amp \
 	rpmsg-sample \
+	cm33 \
 "
 
 IMAGE_INSTALL_append = " \
