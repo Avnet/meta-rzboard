@@ -72,43 +72,43 @@ $ cd ../
 * **Download meta-rzv**
 
 ```bash
-$ git clone http://192.168.2.100/renesas/meta-rzv.git -b dunfell_rzv2l_bsp_v100
+$ git clone http://192.168.2.100/renesas/yocto/meta-rzv.git -b dunfell_rzv2l_bsp_v100
 ```
 
 * **Download meta-rz-features**
 
 ```bash
-$ git clone http://192.168.2.100/renesas/meta-rz-features.git -b dunfell_rzv2l_bsp_v100
+$ git clone http://192.168.2.100/renesas/yocto/meta-rz-features.git -b dunfell_rzv2l_bsp_v100
 ```
 
 * **Download meta-openamp**
 
 ```bash
-$ git clone http://192.168.2.100/renesas/meta-openamp.git -b dunfell_rzv2l_bsp_v100
+$ git clone http://192.168.2.100/renesas/yocto/meta-openamp.git -b dunfell_rzv2l_bsp_v100
 ```
 
 * **Download meta-rzv2l-freertos**
 
 ```bash
-$ git clone http://192.168.2.100/renesas/meta-rzv2l-freertos.git -b dunfell_rzv2l_bsp_v100
+$ git clone http://192.168.2.100/renesas/yocto/meta-rzv2l-freertos.git -b dunfell_rzv2l_bsp_v100
 ```
 
 * **Download meta-drpai**
 
 ```bash
-$ git clone http://192.168.2.100/renesas/meta-drpai.git -b dunfell_rzv2l_bsp_v100
+$ git clone http://192.168.2.100/renesas/yocto/meta-drpai.git -b dunfell_rzv2l_bsp_v100
 ```
 
 * **Download meta-isp**
 
 ```bash
-$ git clone http://192.168.2.100/renesas/meta-isp.git -b dunfell_rzv2l_bsp_v100
+$ git clone http://192.168.2.100/renesas/yocto/meta-isp.git -b dunfell_rzv2l_bsp_v100
 ```
 
 * **Download meta-rzboard**
 
 ```bash
-$ git clone http://192.168.2.100/renesas/meta-rzboard.git -b rzboard_dunfell
+$ git clone http://192.168.2.100/renesas/yocto/meta-rzboard.git -b rzboard_dunfell
 ```
 
 
