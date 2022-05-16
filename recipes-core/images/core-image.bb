@@ -8,22 +8,22 @@ REQUIRED_DISTRO_FEATURES = "wayland"
 CORE_IMAGE_BASE_INSTALL += "weston weston-init"
 CORE_IMAGE_BASE_INSTALL += "${@bb.utils.contains('DISTRO_FEATURES', 'x11', 'weston-xwayland matchbox-terminal', '', d)}"
 
+CORE_IMAGE_EXTRA_INSTALL += " \
+							 packagegroup-core-full-cmdline \
+							 packagegroup-tools-bluetooth \
+"
+
 IMAGE_INSTALL_append = " opencv opencv-dev "
 
 # Basic packages
 IMAGE_INSTALL_append = " \
-    bash \
     bonnie++ \
     v4l-utils \
     i2c-tools \
-    coreutils \
-    util-linux \
     busybox \
     libusb1 \
     pciutils \
-    iproute2 \
     can-utils \
-    ethtool \
     iperf3 \
     openssh \
     openssh-sshd \
@@ -50,7 +50,6 @@ IMAGE_INSTALL_append = " \
     wpa-supplicant \
     hostapd \
     evtest \
-    sudo \
     spitools \
     xz \
     udev-extraconf \
