@@ -5,4 +5,4 @@ SRCREV = "${AUTOREV}"
 
 # When using private git repo, you can append ";user=username:password" to SRC_URI
 # to download the remote repo.
-SRC_URI = "${UBOOT_URL};branch=${BRANCH};protocol=http;${RZBOARD_GIT_USER}"
+SRC_URI = "${UBOOT_URL};branch=${BRANCH};${RZBOARD_GIT_PROTOCOL};${RZBOARD_GIT_USER}"

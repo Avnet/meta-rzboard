@@ -6,7 +6,7 @@ URL = "${RZBOARD_GIT_HOST_MIRROR}/trusted-firmware-a.git"
 BRANCH = "rzboard_v2l"
 SRCREV = "${AUTOREV}"
 
-SRC_URI += "${URL};protocol=http;branch=${BRANCH};${RZBOARD_GIT_USER}"
+SRC_URI += "${URL};${RZBOARD_GIT_PROTOCOL};branch=${BRANCH};${RZBOARD_GIT_USER}"
 
 PV = "2.5-rzg+git${SRCPV}"
 PR = "r1"
