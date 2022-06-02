@@ -62,11 +62,6 @@ IMAGE_INSTALL_append = " \
 	rpmsg-sample \
 	cm33 \
 "
-# Add text editor
-IMAGE_INSTALL_append = " \
-    joe \
-    vim-tiny \
-"
 
 IMAGE_INSTALL_append = " \
                 packagegroup-multimedia-libs \
