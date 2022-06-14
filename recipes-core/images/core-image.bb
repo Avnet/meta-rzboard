@@ -62,6 +62,8 @@ IMAGE_INSTALL_append = " \
 	rpmsg-sample \
 	cm33 \
 "
+# Add text editor
+IMAGE_INSTALL_append = " vim nano"
 
 IMAGE_INSTALL_append = " \
                 packagegroup-multimedia-libs \
