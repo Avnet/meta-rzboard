@@ -69,55 +69,24 @@ $ git checkout 60b251c25ba87e946a0ca4cdc8d17b1cb09292ac
 $ cd ../
 ```
 
-* **Download meta-rzv**
+* **Download meta-renesas**
 
 ```bash
-$ git clone http://192.168.2.100/renesas/yocto/meta-rzv.git -b dunfell_rzv2l_bsp_v100
-```
-
-* **Download meta-rz-features**
-
-```bash
-$ git clone http://192.168.2.100/renesas/yocto/meta-rz-features.git -b dunfell_rzv2l_bsp_v100
-```
-
-* **Download meta-openamp**
-
-```bash
-$ git clone http://192.168.2.100/renesas/yocto/meta-openamp.git -b dunfell_rzv2l_bsp_v100
-```
-
-* **Download meta-rzv2l-freertos**
-
-```bash
-$ git clone http://192.168.2.100/renesas/yocto/meta-rzv2l-freertos.git -b dunfell_rzv2l_bsp_v100
-```
-
-* **Download meta-drpai**
-
-```bash
-$ git clone http://192.168.2.100/renesas/yocto/meta-drpai.git -b dunfell_rzv2l_bsp_v100
-```
-
-* **Download meta-isp**
-
-```bash
-$ git clone http://192.168.2.100/renesas/yocto/meta-isp.git -b dunfell_rzv2l_bsp_v100
+$ git clone http://192.168.2.100/renesas/meta-renesas.git -b dunfell_rzv2l_bsp_v100
 ```
 
 * **Download meta-rzboard**
 
 ```bash
-$ git clone http://192.168.2.100/renesas/yocto/meta-rzboard.git -b rzboard_dunfell
+$ git clone http://192.168.2.100/renesas/meta-rzboard.git -b rzboard_dunfell
 ```
-
 
 
 Now,  the all Yocto related sources are already prepared:
 
 ```bash
 $ ls ~/yocto_rzboard
-meta-gplv2  meta-openembedded  meta-rz-features  meta-rzboard  meta-rzv  poky
+meta-gplv2  meta-openembedded  meta-renesas  meta-rzboard  poky
 ```
 
 
