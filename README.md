@@ -72,13 +72,13 @@ $ cd ../
 * **Download meta-renesas**
 
 ```bash
-$ git clone http://192.168.2.100/renesas/meta-renesas.git -b dunfell_rzv2l_bsp_v100
+$ git clone https://github.com/Avnet/meta-renesas.git -b dunfell_rzv2l_bsp_v100
 ```
 
 * **Download meta-rzboard**
 
 ```bash
-$ git clone http://192.168.2.100/renesas/meta-rzboard.git -b rzboard_dunfell
+$ git clone https://github.com/Avnet/meta-rzboard.git -b rzboard_dunfell
 ```
 
 
@@ -98,10 +98,10 @@ meta-gplv2  meta-openembedded  meta-renesas  meta-rzboard  poky
 *  **Edit build configuration**
 
 ```bash
+$ cd ~/yocto_rzboard
 $ mkdir -p ~/yocto_rzboard/build/conf
-$ cd ~/yocto_rzboard/build
-$ cp ../meta-rzboard/conf/rzboard/* conf/
-$ ls conf/
+$ cp meta-rzboard/conf/rzboard/* build/conf/
+$ ls build/conf/
 bblayers.conf  local.conf
 ```
 
@@ -109,7 +109,7 @@ Users can edit the file ***bblayers.conf, local.conf***  for their own purpose. 
 repository address and account information for RzBoard, please set as below in **conf/local.conf** :
 
 ```bash
-RZBOARD_GIT_HOST_MIRROR = "git://192.168.2.100/renesas"
+RZBOARD_GIT_HOST_MIRROR = "git://your_url"
 RZBOARD_GIT_PROTOCOL = "protocol=http"
 RZBOARD_GIT_USER = "user=username:password"
 ```
@@ -136,8 +136,9 @@ After building, the output files are deployed in ***tmp/deploy/images/rzboard/**
 
 * **bl2_bp-rzboard.srec** : BL2 S-record file.
 * **fip-rzboard.srec** : BL31 and U-boot package in S-record format
-* **core-image-rzboard-xxxx.rootfs.wic** :  SD Card system image, include linux kernel, DTB and root filesystem.
+* **core-image-rzboard-xxxx.rootfs.wic** : SD Card system image, include linux kernel, DTB and root filesystem.
 * **Image** : kernel image
 * **rzboard.dtb** : RzBoard device tree binary
+* **roverlays/rzboard-*.dtbo** : RzBoard device tree overlay binary
 * **core-image-rzboard-xxxx.rootfs.tar.bz2** : root filesystem
 
