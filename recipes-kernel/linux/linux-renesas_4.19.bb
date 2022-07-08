@@ -17,6 +17,11 @@ LINUX_VERSION ?= "4.19.165"
 PV = "${LINUX_VERSION}+git${SRCPV}"
 PR = "r1"
 
+B = "${WORKDIR}/build"
+
+SHORT_SRCREV = "${@d.getVar('PV').split('+')[2]}"
+LINUX_VERSION_EXTENSION = "-g${SHORT_SRCREV}"
+
 KBUILD_DEFCONFIG = "rzboard_defconfig"
 KCONFIG_MODE = "alldefconfig"
 
