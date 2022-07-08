@@ -94,7 +94,7 @@ EXTRA_USERS_PARAMS = "\
 	usermod -P avnet root; \
 "
 # rootfs partition space created in Kbytes
-IMAGE_ROOTFS_SIZE = "1638400"
+IMAGE_ROOTFS_SIZE = "2560000"
 
 # the alignment of the root filesystem image in kilobytes.
 IMAGE_ROOTFS_ALIGNMENT = "16"
