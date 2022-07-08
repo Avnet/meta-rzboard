@@ -1,38 +1,37 @@
-This README file contains information on the contents of the meta-rzboard layer. Please see the corresponding sections below for details.
+# meta-rzboard
+
+This is a meta-layer for Avnet RzBoard.
+
+- Yocto dunfell 3.1.5 support:  Avnet RzBoard
 
 
 
-# 1. About meta-rzboard
-
-This is a Yocto build layer( version: 3.1.5 dunfell ) that provides support for the RzBoard from Avnet, which is based on RZ/V2L Group of 64bit Arm-based MPUs from Renesas Electronics. Currently the following boards and MPUs are supported:
-
-- Board: Avnet RzBoard
+## How to Build
 
 
+#### Build environment
 
-# 2. Building Instruction
-
-
-
-## 2.1 Ubuntu Host Preparation
-
-
-
-Ubuntu should be used as the Linux Host PC OS since the Yocto Project Quick Start specifies Ubuntu as one of the supported distributions. In that case, you can install the required packages by using the commands below.
+It is recommended to setup the development environment on a *<font color=red>64-bit Ubuntu 20.04 LTS</font>* machine.
+The following packages are required:
 
 ```bash
-$ sudo apt-get update
-$ sudo apt-get install -y wget git-core diffstat unzip texinfo gcc-multilib \
+$ sudo apt update
+$ sudo apt install -y wget git-core diffstat unzip texinfo gcc-multilib \
 build-essential chrpath socat cpio python python3 python3-pip python3-pexpect \
 xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa \
 libsdl1.2-dev pylint3 xterm rsync curl locales bash-completion
 ```
 
+Set Git configuration:
+
+```bash
+$ git config --global user.name "Your Name"
+$ git config --global user.email "you@example.com"
+```
 
 
-## 2.2  Fetch Yocto Source code
 
-
+#### Fetch the source code
 
 * **Create working directory**
 
@@ -81,8 +80,7 @@ $ git clone https://github.com/Avnet/meta-renesas.git -b dunfell_rzv2l_bsp_v100
 $ git clone https://github.com/Avnet/meta-rzboard.git -b rzboard_dunfell
 ```
 
-
-Now,  the all Yocto related sources are already prepared:
+Now,  the all Yocto related sources are already prepared.
 
 ```bash
 $ ls ~/yocto_rzboard
@@ -91,11 +89,10 @@ meta-gplv2  meta-openembedded  meta-renesas  meta-rzboard  poky
 
 
 
-## 2.3 Build BSP using Yocto
+#### Build a image
 
 
-
-*  **Edit build configuration**
+*  **Create build configuration**
 
 ```bash
 $ cd ~/yocto_rzboard
@@ -105,40 +102,11 @@ $ ls build/conf/
 bblayers.conf  local.conf
 ```
 
-Users can edit the file ***bblayers.conf, local.conf***  for their own purpose. If you want to change the git
-repository address and account information for RzBoard, please set as below in **conf/local.conf** :
-
-```bash
-RZBOARD_GIT_HOST_MIRROR = "git://your_url"
-RZBOARD_GIT_PROTOCOL = "protocol=http"
-RZBOARD_GIT_USER = "user=username:password"
-```
-
-And user can specify the download directory which store all the packages of yocto, set in **conf/local.conf** :
-
-```bash
-DL_DIR ?= "${HOME}/downloads"
-```
-
-
-
-*  **Setting build environment and Build**
-
+*  **Build**
 ```bash
 $ cd ~/yocto_rzboard/
 $ source poky/oe-init-build-env build/
 $ bitbake core-image
 ```
 
-After building, the output files are deployed in ***tmp/deploy/images/rzboard/*** :
-
-* **flashwriter_rzboard.mot** : Flash Writer
-
-* **bl2_bp-rzboard.srec** : BL2 S-record file.
-* **fip-rzboard.srec** : BL31 and U-boot package in S-record format
-* **core-image-rzboard-xxxx.rootfs.wic** : SD Card system image, include linux kernel, DTB and root filesystem.
-* **Image** : kernel image
-* **rzboard.dtb** : RzBoard device tree binary
-* **roverlays/rzboard-*.dtbo** : RzBoard device tree overlay binary
-* **core-image-rzboard-xxxx.rootfs.tar.bz2** : root filesystem
-
+After the build is successfully completed, the output files will be located in build/tmp/deploy/images/rzboard/ directory.
