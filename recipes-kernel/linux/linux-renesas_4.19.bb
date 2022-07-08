@@ -41,6 +41,11 @@ do_kernel_configme[depends] += "bc-native:do_populate_sysroot bison-native:do_po
 # Fix error: openssl/bio.h: No such file or directory
 DEPENDS += "openssl-native"
 
+# Auto load Wi-Fi driver (chipset NXP 88W8987)
+KERNEL_MODULE_AUTOLOAD += "moal"
+KERNEL_MODULE_PROBECONF += "moal"
+module_conf_moal = "options moal mod_para=nxp/wifi_mod_para.conf"
+
 # support to build dtbo
 KERNEL_DTC_FLAGS = "-@"
 KERNEL_DEVICETREE_OVERLAY ?= ""
