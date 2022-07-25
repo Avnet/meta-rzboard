@@ -17,6 +17,7 @@ IMAGE_INSTALL_append = " opencv opencv-dev "
 
 # Basic packages
 IMAGE_INSTALL_append = " \
+    curl \
     bonnie++ \
     v4l-utils \
     i2c-tools \
