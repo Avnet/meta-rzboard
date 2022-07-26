@@ -76,6 +76,9 @@ IMAGE_INSTALL_append = " \
 	packagegroup-wayland-community \
 "
 
+# Add app demos
+IMAGE_INSTALL_append = " drpai-app-demos"
+
 IMAGE_FEATURES_remove = " ssh-server-dropbear"
 IMAGE_FEATURES_append = " ssh-server-openssh"
 
