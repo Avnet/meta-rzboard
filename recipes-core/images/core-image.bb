@@ -62,6 +62,9 @@ IMAGE_INSTALL_append = " \
 
 CORE_IMAGE_EXTRA_INSTALL += " packagegroup-tools-bluetooth "
 
+# Add app demos
+IMAGE_INSTALL_append = " drpai-app-demos"
+
 # Add extra packages for RzBoard
 inherit extrausers
 EXTRA_USERS_PARAMS = "\
