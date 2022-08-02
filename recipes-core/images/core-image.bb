@@ -77,7 +77,7 @@ IMAGE_INSTALL_append = " \
 "
 
 # Add app demos
-IMAGE_INSTALL_append = " drpai-app-demos"
+IMAGE_INSTALL_append = " drpai-app-demos rzboard-app-script"
 
 IMAGE_FEATURES_remove = " ssh-server-dropbear"
 IMAGE_FEATURES_append = " ssh-server-openssh"
