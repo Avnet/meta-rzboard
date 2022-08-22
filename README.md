@@ -2,7 +2,7 @@
 
 This is a meta-layer for Avnet RzBoard.
 
-- Yocto dunfell 3.1.5 support:  Avnet RzBoard
+- Yocto dunfell 3.1.14 support:  Avnet RzBoard
 
 
 
@@ -16,10 +16,10 @@ The following packages are required:
 
 ```bash
 $ sudo apt update
-$ sudo apt install -y wget git-core diffstat unzip texinfo gcc-multilib \
+$ sudo apt install -y gawk wget git-core diffstat unzip texinfo gcc-multilib \
 build-essential chrpath socat cpio python python3 python3-pip python3-pexpect \
-xz-utils debianutils iputils-ping python3-git python3-jinja2 libegl1-mesa \
-libsdl1.2-dev pylint3 xterm rsync curl locales bash-completion
+xz-utils debianutils iputils-ping libsdl1.2-dev xterm p7zip-full libyaml-dev \
+rsync curl locales bash-completion
 ```
 
 Set Git configuration:
@@ -45,8 +45,9 @@ $ cd ~/yocto_rzboard
 ```bash
 $ git clone https://git.yoctoproject.org/git/poky
 $ cd poky
-$ git checkout dunfell-23.0.5
+$ git checkout dunfell-23.0.14
 $ git cherry-pick 9e44438a9deb7b6bfac3f82f31a1a7ad138a5d16
+$ git cherry-pick cfd897e213debb2e32589378b2f5d390a265eb7f
 $ cd ../
 ```
 
@@ -55,7 +56,7 @@ $ cd ../
 ```bash
 $ git clone https://github.com/openembedded/meta-openembedded
 $ cd meta-openembedded
-$ git checkout cc6fc6b1641ab23089c1e3bba11e0c6394f0867c
+$ git checkout ec978232732edbdd875ac367b5a9c04b881f2e19
 $ cd ../
 ```
 
@@ -68,23 +69,38 @@ $ git checkout 60b251c25ba87e946a0ca4cdc8d17b1cb09292ac
 $ cd ../
 ```
 
+- **Download meta-qt5 and Docker (Optional)**
+
+```bash
+$ git clone https://github.com/meta-qt5/meta-qt5.git
+$ cd meta-qt5
+$ git checkout c1b0c9f546289b1592d7a895640de103723a0305
+$ cd ../
+
+$ git clone https://git.yoctoproject.org/git/meta-virtualization -b dunfell
+$ cd meta-virtualization
+$ git checkout c5f61e547b90aa8058cf816f00902afed9c96f72
+$ cd ../
+```
+
+
 * **Download meta-renesas**
 
 ```bash
-$ git clone https://github.com/Avnet/meta-renesas.git -b dunfell_rzv2l_bsp_v100
+$ git clone https://github.com/Avnet/meta-renesas.git -b dunfell_rzv2l_bsp_v300
 ```
 
 * **Download meta-rzboard**
 
 ```bash
-$ git clone https://github.com/Avnet/meta-rzboard.git -b rzboard_dunfell
+$ git clone https://github.com/Avnet/meta-rzboard.git -b rzboard_dunfell_5.10
 ```
 
 Now,  the all Yocto related sources are already prepared.
 
 ```bash
 $ ls ~/yocto_rzboard
-meta-gplv2  meta-openembedded  meta-renesas  meta-rzboard  poky
+meta-gplv2  meta-openembedded  meta-qt5  meta-renesas  meta-virtualization  poky
 ```
 
 

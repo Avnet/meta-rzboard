@@ -1,21 +1,26 @@
 DESCRIPTION = "Linux kernel for RzBoard"
 
 require recipes-kernel/linux/linux-yocto.inc
+require include/docker-control.inc
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}/:"
-COMPATIBLE_MACHINE = "(smarc-rzg2l|rzg2l-dev|smarc-rzv2l|rzv2l-dev|rzboard)"
+COMPATIBLE_MACHINE = "(smarc-rzg2l|smarc-rzv2l|rzv2l-dev|rzboard)"
 
 KERNEL_URL = "${RZBOARD_GIT_HOST_MIRROR}/renesas-linux-cip.git"
-BRANCH = "rzboard_v2l_v4.19"
+BRANCH = "rzboard_v2l_v5.10"
 SRCREV = "${AUTOREV}"
 
 SRC_URI = "${KERNEL_URL};${RZBOARD_GIT_PROTOCOL};nocheckout=1;branch=${BRANCH};${RZBOARD_GIT_USER}"
 
-LIC_FILES_CHKSUM = "file://COPYING;md5=bbea815ee2795b2f4230826c0c6b8814"
-LINUX_VERSION ?= "4.19.165"
+LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
+LINUX_VERSION ?= "5.10.83"
 
 PV = "${LINUX_VERSION}+git${SRCPV}"
 PR = "r1"
+
+SRC_URI_append = "\
+  ${@oe.utils.conditional("USE_DOCKER", "1", " file://docker.cfg ", "", d)} \
+"
 
 B = "${WORKDIR}/build"
 
