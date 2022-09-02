@@ -30,7 +30,9 @@ IMAGE_FEATURES_append = " ssh-server-openssh"
 
 IMAGE_INSTALL_remove = " \
     optee-client \
+    v4l2-init \
 "
+
 ROOTFS_POSTPROCESS_COMMAND_remove= "update_issue;"
 
 # Additional packages
