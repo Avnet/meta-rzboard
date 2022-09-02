@@ -78,8 +78,8 @@ state.audioda7212 {
 	control.6 {
 		iface MIXER
 		name 'DAC Volume'
-		value.0 55
-		value.1 55
+		value.0 72
+		value.1 72
 		comment {
 			access 'read write'
 			type INTEGER
@@ -87,8 +87,8 @@ state.audioda7212 {
 			range '0 - 127'
 			dbmin -9999999
 			dbmax 1125
-			dbvalue.0 -4275
-			dbvalue.1 -4275
+			dbvalue.0 -3000
+			dbvalue.1 -3000
 		}
 	}
 	control.7 {
