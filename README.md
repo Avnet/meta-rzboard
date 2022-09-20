@@ -93,7 +93,7 @@ $ git clone https://github.com/Avnet/meta-renesas.git -b dunfell_rzv2l_bsp_v300
 * **Download meta-rzboard**
 
 ```bash
-$ git clone https://github.com/Avnet/meta-rzboard.git -b rzboard_dunfell_5.10
+$ git clone https://github.com/Avnet/meta-rzboard.git -b rzboard_dunfell_v2
 ```
 
 Now,  the all Yocto related sources are already prepared.
