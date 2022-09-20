@@ -56,6 +56,7 @@ IMAGE_INSTALL_append = " \
     hostapd \
     obexftp \
     bluez5 \
+    bluez5-dev \
     rzboard-firmware \
 "
 
