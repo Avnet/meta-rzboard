@@ -10,17 +10,17 @@ S = "${WORKDIR}"
 SRC_URI = " "
 
 SRC_URI_rzboard = " \
-            file://rzg2l_cm33_rpmsg_demo_non_secure_code.bin \
-            file://rzg2l_cm33_rpmsg_demo_non_secure_vector.bin \
-            file://rzg2l_cm33_rpmsg_demo_secure_code.bin \
-            file://rzg2l_cm33_rpmsg_demo_secure_vector.bin \
+            file://rzv2l_cm33_rpmsg_demo_non_secure_code.bin \
+            file://rzv2l_cm33_rpmsg_demo_non_secure_vector.bin \
+            file://rzv2l_cm33_rpmsg_demo_secure_code.bin \
+            file://rzv2l_cm33_rpmsg_demo_secure_vector.bin \
 "
 
 FILES_${PN} = "/boot"
 
 do_install () {
     install -d ${D}/boot/cm33
-    install -m 0644 ${S}/rzg2l_cm33_rpmsg_*.bin ${D}/boot/cm33
+    install -m 0644 ${S}/rzv2l_cm33_rpmsg_*.bin ${D}/boot/cm33
 }
 
 inherit deploy
@@ -28,7 +28,7 @@ addtask deploy after do_install
 
 do_deploy () {
 	install -d ${DEPLOYDIR}/cm33
-    install -m 0644 ${D}/boot/cm33/rzg2l_cm33_rpmsg_*.bin ${DEPLOYDIR}/cm33
+    install -m 0644 ${D}/boot/cm33/rzv2l_cm33_rpmsg_*.bin ${DEPLOYDIR}/cm33
 }
 
 COMPATIBLE_MACHINE = "(rzboard)"
