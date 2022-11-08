@@ -5,8 +5,9 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
-SRC_URI = "https://docs.avnet.com/amer/smart_channel/Renesas/Rzboard_v2l/app_demos_v7.10.tar.bz2;name=demo;subdir=demo_save "
-SRC_URI[demo.sha256sum] = "3967f297a0ca788c976ad70106420ef444533499aea5ab25784e76836894afdc"
+DEMO_FILE  =  "app_demos_v7.20.tar.bz2"
+SRC_URI = "https://docs.avnet.com/amer/smart_channel/Renesas/Rzboard_v2l/${DEMO_FILE};unpack=0;name=demo;subdir=demo_save "
+SRC_URI[demo.sha256sum] = "3250771db905dba822bb062d80931af60c5f0d500a089a536c7db03ef6485d7b"
 
 APP_INSTALL_DIRECTORY ?= "${ROOT_HOME}"
 FILES_${PN} = " \
@@ -17,7 +18,7 @@ S = "${WORKDIR}"
 
 do_install() {
 	install -d ${D}${APP_INSTALL_DIRECTORY}
-	cp -rf ${S}/demo_save/*        ${D}${APP_INSTALL_DIRECTORY}
+	install -m 0644 ${S}/demo_save/${DEMO_FILE}       ${D}${APP_INSTALL_DIRECTORY}/app_demos.tar.bz2
 }
 
 INSANE_SKIP_${PN} += "file-rdeps"

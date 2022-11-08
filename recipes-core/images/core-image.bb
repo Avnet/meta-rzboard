@@ -65,6 +65,16 @@ CORE_IMAGE_EXTRA_INSTALL += " packagegroup-tools-bluetooth "
 # Add app demos
 IMAGE_INSTALL_append = " drpai-app-demos rzboard-app-script"
 
+unzip_drpai_demo() {
+    DEMO_FILE=app_demos.tar.bz2
+
+    if [ -e ${IMAGE_ROOTFS}/home/root/${DEMO_FILE} ] ; then
+        tar -x -j -f ${IMAGE_ROOTFS}/home/root/${DEMO_FILE} -C ${IMAGE_ROOTFS}/home/root/
+        rm ${IMAGE_ROOTFS}/home/root/${DEMO_FILE}
+    fi
+}
+ROOTFS_POSTPROCESS_COMMAND += "unzip_drpai_demo; "
+
 # Add extra packages for RzBoard
 inherit extrausers
 EXTRA_USERS_PARAMS = "\
