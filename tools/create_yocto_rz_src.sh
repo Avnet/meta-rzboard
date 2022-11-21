@@ -181,6 +181,9 @@ function remove_redundant_patches(){
 
 	# remove u-boot patches
 	find ${YOCTO_HOME} -name "u-boot_*.bbappend" -print -exec rm -rf {} \;
+
+	# remove tfa patches
+	find ${YOCTO_HOME} -name "trusted-firmware-a.bbappend" -print -exec mv {} {}.remove \;
 }
 
 #---start--------
