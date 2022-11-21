@@ -9,7 +9,7 @@ This is a meta-layer for Avnet RzBoard.
 ## How to Build
 
 
-#### Build environment
+### Build environment
 
 It is recommended to setup the development environment on a *<font color=red>64-bit Ubuntu 20.04 LTS</font>* machine.
 The following packages are required:
@@ -31,84 +31,75 @@ $ git config --global user.email "you@example.com"
 
 
 
-#### Fetch the source code
+### Fetch the source code
 
-* **Create working directory**
+* ##### **Download Renesas software packages**
+
+Due to licensing restrictions on the Renesas website, users are required to download the software packages from the [Official RZ/V2L Website](https://www.renesas.cn/us/en/products/microcontrollers-microprocessors/rz-mpus/rzv2l-general-purpose-microprocessor-equipped-renesas-original-ai-accelerator-drp-ai-12ghz-dual) in person.
+
+The following packages should be download:
+
+| Package Name                  | Version                  | Download File                               |
+| ----------------------------- | ------------------------ | ------------------------------------------- |
+| RZ/V Verified Linux Package   | v3.0.0-update2           | RTK0EF0045Z0024AZJ-v3.0.0-update2.zip       |
+| RZ MPU Graphics Library       | Evaluation Version V1.2  | RTK0EF0045Z13001ZJ-v1.21_EN.zip             |
+| RZ MPU Codec Library          | Evaluation Version V0.58 | RTK0EF0045Z15001ZJ-v0.58_EN.zip             |
+| RZ/V2L DRP-AI Support Package | V7.20                    | r11an0549ej0720-rzv2l-drpai-sp.zip          |
+| RZ/V2L ISP Support Package    | V1.20                    | r11an0561ej0120-rzv2l-isp-sp.zip            |
+| RZ/V2L Multi-OS Package       | V1.02                    | r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip |
+
+*Note: The evaluation versions contain a time limitation that stops the software after a few hours.*
+
+For more information please refer to [RZ/V2L Wiki](https://renesas.info/wiki/RZ-V/RZ-V2L_SMARC).
+
+
+
+After getting all the packages, copy them to **the home directory ( ~/ )** and prepare for the next step.
+
+
+
+* ##### **Extract Renesas software packages**
+
+Download a script to extract the file
+```bash
+$ cd ~/
+$ wget http://192.168.2.100/renesas/meta-rzboard/-/blob/rzboard_dunfell_5.10/tools/create_yocto_rz_src.sh
+$ ls ~/
+create_yocto_rz_src.sh                       RTK0EF0045Z0024AZJ-v3.0.0-update2.zip
+r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip  RTK0EF0045Z13001ZJ-v1.21_EN.zip
+r11an0549ej0720-rzv2l-drpai-sp.zip           RTK0EF0045Z15001ZJ-v0.58_EN.zip
+r11an0561ej0120-rzv2l-isp-sp.zip
+```
+Run the script to generate **yocto_rzboard/** directory
+```bash
+$ ./create_yocto_rz_src.sh
+$ ls yocto_rzboard/
+meta-gplv2     meta-openembedded  meta-renesas      meta-virtualization
+meta-multi-os  meta-qt5           meta-rz-features  poky
+```
+
+
+
+* ##### **Download meta-rzboard**
 
 ```bash
-$ mkdir ~/yocto_rzboard
 $ cd ~/yocto_rzboard
+$ git clone https://github.com/Avnet/meta-rzboard.git -b rzboard_dunfell_5.10
 ```
 
-* **Download Poky source code**
-
-```bash
-$ git clone https://git.yoctoproject.org/git/poky
-$ cd poky
-$ git checkout dunfell-23.0.14
-$ git cherry-pick 9e44438a9deb7b6bfac3f82f31a1a7ad138a5d16
-$ git cherry-pick cfd897e213debb2e32589378b2f5d390a265eb7f
-$ cd ../
-```
-
-* **Download meta-openembedded**
-
-```bash
-$ git clone https://github.com/openembedded/meta-openembedded
-$ cd meta-openembedded
-$ git checkout ec978232732edbdd875ac367b5a9c04b881f2e19
-$ cd ../
-```
-
-- **Download meta-gplv2**
-
-```bash
-$ git clone https://git.yoctoproject.org/git/meta-gplv2 -b dunfell
-$ cd meta-gplv2
-$ git checkout 60b251c25ba87e946a0ca4cdc8d17b1cb09292ac
-$ cd ../
-```
-
-- **Download meta-qt5 and Docker (Optional)**
-
-```bash
-$ git clone https://github.com/meta-qt5/meta-qt5.git
-$ cd meta-qt5
-$ git checkout c1b0c9f546289b1592d7a895640de103723a0305
-$ cd ../
-
-$ git clone https://git.yoctoproject.org/git/meta-virtualization -b dunfell
-$ cd meta-virtualization
-$ git checkout c5f61e547b90aa8058cf816f00902afed9c96f72
-$ cd ../
-```
-
-
-* **Download meta-renesas**
-
-```bash
-$ git clone https://github.com/Avnet/meta-renesas.git -b dunfell_rzv2l_bsp_v300
-```
-
-* **Download meta-rzboard**
-
-```bash
-$ git clone https://github.com/Avnet/meta-rzboard.git -b rzboard_dunfell_v2
-```
-
-Now,  the all Yocto related sources are already prepared.
+So far, all the yocto related sources are in place.
 
 ```bash
 $ ls ~/yocto_rzboard
-meta-gplv2  meta-openembedded  meta-qt5  meta-renesas  meta-virtualization  poky
+meta-gplv2     meta-openembedded  meta-renesas  meta-rz-features     poky
+meta-multi-os  meta-qt5           meta-rzboard  meta-virtualization
 ```
 
 
 
-#### Build a image
+### Build a image
 
-
-*  **Create build configuration**
+*  ##### **Create build configuration**
 
 ```bash
 $ cd ~/yocto_rzboard
@@ -118,11 +109,10 @@ $ ls build/conf/
 bblayers.conf  local.conf
 ```
 
-*  **Build**
+*  ##### **Build**
 ```bash
 $ cd ~/yocto_rzboard/
 $ source poky/oe-init-build-env build/
 $ bitbake core-image
 ```
-
 After the build is successfully completed, the output files will be located in build/tmp/deploy/images/rzboard/ directory.
