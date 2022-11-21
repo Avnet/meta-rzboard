@@ -63,7 +63,8 @@ After getting all the packages, copy them to **the home directory ( ~/ )** and p
 Download a script to extract the file
 ```bash
 $ cd ~/
-$ wget http://192.168.2.100/renesas/meta-rzboard/-/blob/rzboard_dunfell_5.10/tools/create_yocto_rz_src.sh
+$ wget https://raw.githubusercontent.com/Avnet/meta-rzboard/rzboard_dunfell_5.10/tools/create_yocto_rz_src.sh
+$ chmod a+x create_yocto_rz_src.sh
 $ ls ~/
 create_yocto_rz_src.sh                       RTK0EF0045Z0024AZJ-v3.0.0-update2.zip
 r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip  RTK0EF0045Z13001ZJ-v1.21_EN.zip
