@@ -2,5 +2,6 @@
 
 fdtfile=rzboard.dtb
 enable_overlay_disp=hdmi
+#fdt_extra_overlays=rzboard-mipi-ph720128t003.dtbo
 #fdt_extra_overlays=1.dtbo 2.dtbo 3.dtbo
 #ethaddr=aa:bb:cc:aa:bb:cc
