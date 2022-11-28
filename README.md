@@ -114,6 +114,6 @@ bblayers.conf  local.conf
 ```bash
 $ cd ~/yocto_rzboard/
 $ source poky/oe-init-build-env build/
-$ bitbake core-image
+$ bitbake avnet-core-image
 ```
 After the build is successfully completed, the output files will be located in build/tmp/deploy/images/rzboard/ directory.
