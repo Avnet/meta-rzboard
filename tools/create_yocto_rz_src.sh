@@ -81,7 +81,6 @@ check_pkg_require(){
 		log_warn "This is an Evaluation Version package ${REN_GPU_MALI_LIB_PKG_EVAL}${SUFFIX_ZIP}"
 		log_warn "It is recommended to download 'MPU Graphics Library Unrestricted Version' from Renesas Website"
 		echo ""
-		check=0
 	fi
 	if [ ! -e ${REN_VEDIO_CODEC_LIB_PKG}${SUFFIX_ZIP} ] && [ ! -e ${REN_VEDIO_CODEC_LIB_PKG_EVAL}${SUFFIX_ZIP} ] ;then
 		log_error "Error: Cannot found ${REN_VEDIO_CODEC_LIB_PKG}${SUFFIX_ZIP} !"
@@ -92,7 +91,6 @@ check_pkg_require(){
 		log_warn "This is an Evaluation Version package ${REN_VEDIO_CODEC_LIB_PKG_EVAL}${SUFFIX_ZIP}"
 		log_warn "It is recommended to download 'MPU Video Codec Library Unrestricted Version' from Renesas Website"
 		echo ""
-		check=0
 	fi   
 	if [ ! -e ${REN_V2L_DRPAI_PKG}${SUFFIX_ZIP} ];then
 		log_error "Error: Cannot found ${REN_V2L_DRPAI_PKG}${SUFFIX_ZIP} !"
