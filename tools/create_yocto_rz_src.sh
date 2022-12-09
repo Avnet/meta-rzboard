@@ -1,17 +1,21 @@
 #!/bin/bash
 
-VERSION=0.1.0
+VERSION=0.2.0
 
 # Make sure that the following packages have been downloaded from the official website
 # RZ/V Verified Linux Package [5.10-CIP]  V3.0.0-update2
 REN_LINUX_BSP_PKG="RTK0EF0045Z0024AZJ-v3.0.0-update2"
 SUFFIX_ZIP=".zip"
 
+# RZ MPU Graphics Library V1.21 Unrestricted Version
+REN_GPU_MALI_LIB_PKG="RTK0EF0045Z14001ZJ-v1.21_EN"
 # RZ MPU Graphics Library Evaluation Version V1.2
-REN_GPU_MALI_LIB_PKG="RTK0EF0045Z13001ZJ-v1.21_EN"
+REN_GPU_MALI_LIB_PKG_EVAL="RTK0EF0045Z13001ZJ-v1.21_EN"
 
-# RZ MPU Codec Library Evaluation Version V0.58
-REN_VEDIO_CODEC_LIB_PKG="RTK0EF0045Z15001ZJ-v0.58_EN"
+# RZ MPU Video Codec Library v1.0 Unrestricted Version
+REN_VEDIO_CODEC_LIB_PKG="RTK0EF0045Z16001ZJ-v1.0_rzg_EN"
+# RZ MPU Video Codec Library Evaluation Version V1.0
+REN_VEDIO_CODEC_LIB_PKG_EVAL="RTK0EF0045Z15001ZJ-v1.0_EN"
 
 # RZ/V2L DRP-AI Support Package Version 7.20
 REN_V2L_DRPAI_PKG="r11an0549ej0720-rzv2l-drpai-sp"
@@ -40,6 +44,8 @@ function main_process(){
 	unpack_isp
 	unpack_multi_os
 	remove_redundant_patches
+	echo ""
+	echo "ls ${YOCTO_HOME}"
 	ls ${YOCTO_HOME}
 	echo ""
 	echo "---Finished---"
@@ -47,7 +53,12 @@ function main_process(){
 
 log_error(){
     local string=$1
-    echo -ne "\e[31m $string \e[0m\n"
+    echo -ne "\e[1;31m $string \e[0m\n"
+}
+
+log_warn(){
+    local string=$1
+    echo -ne "\e[1;33m $string \e[0m\n"
 }
 
 check_pkg_require(){
@@ -56,113 +67,142 @@ check_pkg_require(){
 	cd ${WORKSPACE}
 
 	if [ ! -e ${REN_LINUX_BSP_PKG}${SUFFIX_ZIP} ];then
-		log_error "Cannot found ${REN_LINUX_BSP_PKG}${SUFFIX_ZIP} !"
-		echo "Please download 'RZ/V Verified Linux Package' from Renesas RZ/V2L Website"
+		log_error "Error: Cannot found ${REN_LINUX_BSP_PKG}${SUFFIX_ZIP} !"
+		log_error "Please download 'RZ/V Verified Linux Package' from Renesas RZ/V2L Website"
+		echo ""
 		check=1
 	fi
-	if [ ! -e ${REN_GPU_MALI_LIB_PKG}${SUFFIX_ZIP} ];then
-		log_error "Cannot found ${REN_GPU_MALI_LIB_PKG}${SUFFIX_ZIP} !"
-		echo "Please download 'RZ MPU Graphics Library' from Renesas RZ/V2L Website"
+	if [ ! -e ${REN_GPU_MALI_LIB_PKG}${SUFFIX_ZIP} ] && [ ! -e ${REN_GPU_MALI_LIB_PKG_EVAL}${SUFFIX_ZIP} ]; then
+		log_error "Error: Cannot found ${REN_GPU_MALI_LIB_PKG}${SUFFIX_ZIP} !"
+		log_error "Please download 'RZ MPU Graphics Library' from Renesas RZ/V2L Website"
+		echo ""
 		check=2
+	elif [ ! -e ${REN_GPU_MALI_LIB_PKG}${SUFFIX_ZIP} ] && [ -e ${REN_GPU_MALI_LIB_PKG_EVAL}${SUFFIX_ZIP} ]; then
+		log_warn "This is an Evaluation Version package ${REN_GPU_MALI_LIB_PKG_EVAL}${SUFFIX_ZIP}"
+		log_warn "It is recommended to download 'MPU Graphics Library Unrestricted Version' from Renesas Website"
+		echo ""
+		check=0
 	fi
-	if [ ! -e ${REN_VEDIO_CODEC_LIB_PKG}${SUFFIX_ZIP} ];then
-		log_error "Cannot found ${REN_VEDIO_CODEC_LIB_PKG}${SUFFIX_ZIP} !"
-		echo "Please download 'RZ MPU Codec Library' from Renesas RZ/V2L Website"
+	if [ ! -e ${REN_VEDIO_CODEC_LIB_PKG}${SUFFIX_ZIP} ] && [ ! -e ${REN_VEDIO_CODEC_LIB_PKG_EVAL}${SUFFIX_ZIP} ] ;then
+		log_error "Error: Cannot found ${REN_VEDIO_CODEC_LIB_PKG}${SUFFIX_ZIP} !"
+		log_error "Please download 'RZ MPU Codec Library' from Renesas RZ/V2L Website"
+		echo ""
 		check=3
+	elif [ ! -e ${REN_VEDIO_CODEC_LIB_PKG}${SUFFIX_ZIP} ] && [ -e ${REN_VEDIO_CODEC_LIB_PKG_EVAL}${SUFFIX_ZIP}  ]; then
+		log_warn "This is an Evaluation Version package ${REN_VEDIO_CODEC_LIB_PKG_EVAL}${SUFFIX_ZIP}"
+		log_warn "It is recommended to download 'MPU Video Codec Library Unrestricted Version' from Renesas Website"
+		echo ""
+		check=0
 	fi   
 	if [ ! -e ${REN_V2L_DRPAI_PKG}${SUFFIX_ZIP} ];then
-		log_error "Cannot found ${REN_V2L_DRPAI_PKG}${SUFFIX_ZIP} !"
-		echo "Please download 'RZ/V2L DRP-AI Support Package' from Renesas RZ/V2L Website"
+		log_error "Error: Cannot found ${REN_V2L_DRPAI_PKG}${SUFFIX_ZIP} !"
+		log_error "Please download 'RZ/V2L DRP-AI Support Package' from Renesas RZ/V2L Website"
+		echo ""
 		check=4
 	fi
 	if [ ! -e ${REN_V2L_ISP_PKG}${SUFFIX_ZIP} ];then
-		log_error "Cannot found ${REN_V2L_ISP_PKG}${SUFFIX_ZIP} !"
-		echo "Please download 'RZ/V2L ISP Support Package' from Renesas RZ/V2L Website"
+		log_error "Error: Cannot found ${REN_V2L_ISP_PKG}${SUFFIX_ZIP} !"
+		log_error "Please download 'RZ/V2L ISP Support Package' from Renesas RZ/V2L Website"
+		echo ""
 		check=5
 	fi
 	if [ ! -e ${REN_V2L_MULTI_OS_PKG}${SUFFIX_ZIP} ];then
-		log_error "Cannot found ${REN_V2L_MULTI_OS_PKG}${SUFFIX_ZIP} !"
-		echo "Please download 'RZ/V2L Group Multi-OS Package' from Renesas RZ/V2L Website"
+		log_error "Error: Cannot found ${REN_V2L_MULTI_OS_PKG}${SUFFIX_ZIP} !"
+		log_error "Please download 'RZ/V2L Group Multi-OS Package' from Renesas RZ/V2L Website"
+		echo ""
 		check=6
 	fi
 
 	[ ${check} -ne 0 ] && echo "---Failed---" && exit
 }
 
+# usage: extract_to_meta zipfile zipdir tarfile tardir
 function extract_to_meta(){
 	local zipfile=$1
-	local tarfile=$2
-	local tardir=$3
-	
+	local zipdir=$2
+	local tarfile_tmp=$3
+	local tardir=$4
+	local tarfile=
+
+	echo ""
+	echo $zipfile $zipdir
+	echo $tarfile_tmp $tardir
+
 	cd ${WORKSPACE}
 	pwd
-	unzip ${zipfile}
+	echo "Extract zip file to ${zipdir} and then untar ${tarfile_tmp} file"
+	unzip -d ${zipdir} ${zipfile}
+	tarfile=$(find ${zipdir} -type f -name ${tarfile_tmp})
+	echo "TAR: "${tarfile}
 	tar -xzf ${tarfile} -C ${tardir}
 	sync
 }
 
 function unpack_bsp(){
 	local pkg_file=${WORKSPACE}/${REN_LINUX_BSP_PKG}${SUFFIX_ZIP}
-	local zip_dir=${REN_LINUX_BSP_PKG}
+	local zip_dir="REN_LINUX_BSP"
+	local bsp="rzv*_bsp_v*.tar.gz"
+	local bsp_patch=""
 
-	local bsp="rzv_bsp_v3.0.0.tar.gz"
-	local bsp_patch="rzv_v300-to-v300update2.patch"
-
-	extract_to_meta ${pkg_file} "${zip_dir}/${bsp}" ${YOCTO_HOME}
-	patch -d ${YOCTO_HOME} -p1 < ${zip_dir}/${bsp_patch}
+	extract_to_meta ${pkg_file} ${zip_dir} ${bsp} ${YOCTO_HOME}
+	bsp_patch=$(find ${zip_dir} -type f -name "rzv*.patch")
+	if [ -n "${bsp_patch}" ]; then
+		echo ${bsp_patch}
+		patch -d ${YOCTO_HOME} -p1 < ${bsp_patch}
+	fi
 	rm -fr ${zip_dir}
 }
 
 function unpack_gpu(){
 	local pkg_file=${WORKSPACE}/${REN_GPU_MALI_LIB_PKG}${SUFFIX_ZIP}
-	local zip_dir=${REN_GPU_MALI_LIB_PKG}
+	local zip_dir="REN_GPU_MALI"
+	local gpu="meta-rz-features*.tar.gz"
 
-	local gpu="meta-rz-features.tar.gz"
+	if [ ! -e ${REN_GPU_MALI_LIB_PKG}${SUFFIX_ZIP} ]; then
+		pkg_file=${WORKSPACE}/${REN_GPU_MALI_LIB_PKG_EVAL}${SUFFIX_ZIP}
+	fi
 
-	extract_to_meta ${pkg_file} "${zip_dir}/${gpu}" ${YOCTO_HOME}
+	extract_to_meta ${pkg_file} ${zip_dir} ${gpu} ${YOCTO_HOME}
 	rm -fr ${zip_dir}
 }
 
 function unpack_codec(){
 	local pkg_file=${WORKSPACE}/${REN_VEDIO_CODEC_LIB_PKG}${SUFFIX_ZIP}
-	local zip_dir=${REN_VEDIO_CODEC_LIB_PKG}
+	local zip_dir="REN_VEDIO_CODEC"
+	local codec="meta-rz-features*.tar.gz"
 
-	local codec="meta-rz-features.tar.gz"
+	if [ ! -e ${REN_VEDIO_CODEC_LIB_PKG}${SUFFIX_ZIP} ]; then
+		pkg_file=${WORKSPACE}/${REN_VEDIO_CODEC_LIB_PKG_EVAL}${SUFFIX_ZIP}
+	fi
 
-	extract_to_meta ${pkg_file} "${zip_dir}/${codec}" ${YOCTO_HOME}
+	extract_to_meta ${pkg_file} ${zip_dir} ${codec} ${YOCTO_HOME}
 	rm -fr ${zip_dir}
 }
 
 function unpack_drpai(){
 	local pkg_file=${WORKSPACE}/${REN_V2L_DRPAI_PKG}${SUFFIX_ZIP}
-	local zip_dir=${REN_V2L_DRPAI_PKG}
+	local zip_dir="REN_V2L_DRPAI"
+	local drpai="meta-rz-features*.tar.gz"
 
-	local drpai="rzv2l_drpai-driver/meta-rz-features.tar.gz"
-
-	cd ${WORKSPACE}
-	unzip -d ${zip_dir} ${pkg_file}
-	tar -xzf ${zip_dir}/${drpai} -C ${YOCTO_HOME}
-	sync
+	extract_to_meta ${pkg_file} ${zip_dir} ${drpai} ${YOCTO_HOME}
 	rm -fr ${zip_dir}
 }
 
 function unpack_isp(){
 	local pkg_file=${WORKSPACE}/${REN_V2L_ISP_PKG}${SUFFIX_ZIP}
-	local zip_dir=${REN_V2L_ISP_PKG}
+	local zip_dir="REN_V2L_ISP"
+	local isp="meta-rz-features*.tar.gz"
 
-	local isp="meta-rz-features.tar.gz"
-
-	extract_to_meta ${pkg_file} "${zip_dir}/${isp}" ${YOCTO_HOME}
+	extract_to_meta ${pkg_file} ${zip_dir} ${isp} ${YOCTO_HOME}
 	rm -fr ${zip_dir}
 }
 
 function unpack_multi_os(){
 	local pkg_file=${WORKSPACE}/${REN_V2L_MULTI_OS_PKG}${SUFFIX_ZIP}
-	local zip_dir=${REN_V2L_MULTI_OS_PKG}
+	local zip_dir="REN_MULTI_OS"
+	local rtos="meta-rz-features*.tar.gz"
 
-	local rtos="meta-rz-features.tar.gz"
-
-	extract_to_meta ${pkg_file} "${zip_dir}/${rtos}" ${zip_dir}
+	extract_to_meta ${pkg_file} ${zip_dir} ${rtos} ${zip_dir}
 	cp -ar ${WORKSPACE}/${zip_dir}/meta-rz-features ${YOCTO_HOME}/meta-multi-os
 	rm -fr ${zip_dir}
 
