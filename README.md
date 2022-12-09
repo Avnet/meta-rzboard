@@ -39,18 +39,18 @@ Due to licensing restrictions on the Renesas website, users are required to down
 
 The following packages should be download:
 
-| Package Name                  | Version                  | Download File                               |
-| ----------------------------- | ------------------------ | ------------------------------------------- |
-| RZ/V Verified Linux Package   | v3.0.0-update2           | RTK0EF0045Z0024AZJ-v3.0.0-update2.zip       |
-| RZ MPU Graphics Library       | Evaluation Version V1.2  | RTK0EF0045Z13001ZJ-v1.21_EN.zip             |
-| RZ MPU Codec Library          | Evaluation Version V0.58 | RTK0EF0045Z15001ZJ-v0.58_EN.zip             |
-| RZ/V2L DRP-AI Support Package | V7.20                    | r11an0549ej0720-rzv2l-drpai-sp.zip          |
-| RZ/V2L ISP Support Package    | V1.20                    | r11an0561ej0120-rzv2l-isp-sp.zip            |
-| RZ/V2L Multi-OS Package       | V1.02                    | r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip |
+| Package Name                  | Version                    | Download File                               |
+| ----------------------------- | -------------------------- | ------------------------------------------- |
+| RZ/V Verified Linux Package   | V3.0.0-update2             | RTK0EF0045Z0024AZJ-v3.0.0-update2.zip       |
+| RZ MPU Graphics Library       | Unrestricted Version V1.21 | RTK0EF0045Z13001ZJ-v1.21_EN.zip             |
+| RZ MPU Codec Library          | Unrestricted Version V1.0  | RTK0EF0045Z15001ZJ-v0.58_EN.zip             |
+| RZ/V2L DRP-AI Support Package | V7.20                      | r11an0549ej0720-rzv2l-drpai-sp.zip          |
+| RZ/V2L ISP Support Package    | V1.20                      | r11an0561ej0120-rzv2l-isp-sp.zip            |
+| RZ/V2L Multi-OS Package       | V1.02                      | r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip |
 
-*Note: The evaluation versions contain a time limitation that stops the software after a few hours.*
+***Note***: *The Renesas website provides two version packages, "Evaluation Version" and "Unrestricted Version", for each of the **Graphics Library** and the **Codec Library**. It is recommended to download the **Unrestricted Version**, as the Evaluation Version contains a time limitation that stops the software after a few hours.*
 
-For more information please refer to [RZ/V2L Wiki](https://renesas.info/wiki/RZ-V/RZ-V2L_SMARC).
+For more information please refer to [RZ/V2L Wiki](https://renesas.info/wiki/RZ-V/RZ-V2L_SMARC) and [RZ/V2 Linux BSP](https://renesas.info/wiki/RZ-G/RZ-G2_BSP).
 
 
 
@@ -67,8 +67,8 @@ $ wget https://raw.githubusercontent.com/Avnet/meta-rzboard/rzboard_dunfell_5.10
 $ chmod a+x create_yocto_rz_src.sh
 $ ls ~/
 create_yocto_rz_src.sh                       RTK0EF0045Z0024AZJ-v3.0.0-update2.zip
-r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip  RTK0EF0045Z13001ZJ-v1.21_EN.zip
-r11an0549ej0720-rzv2l-drpai-sp.zip           RTK0EF0045Z15001ZJ-v0.58_EN.zip
+r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip  RTK0EF0045Z14001ZJ-v1.21_EN.zip
+r11an0549ej0720-rzv2l-drpai-sp.zip           RTK0EF0045Z16001ZJ-v1.0_rzg_EN.zip
 r11an0561ej0120-rzv2l-isp-sp.zip
 ```
 Run the script to generate **yocto_rzboard/** directory
@@ -92,8 +92,8 @@ So far, all the yocto related sources are in place.
 
 ```bash
 $ ls ~/yocto_rzboard
-meta-gplv2     meta-openembedded  meta-renesas  meta-rz-features     poky
-meta-multi-os  meta-qt5           meta-rzboard  meta-virtualization
+meta-gplv2     meta-openembedded  meta-renesas      meta-rzboard         poky
+meta-multi-os  meta-qt5           meta-rz-features  meta-virtualization
 ```
 
 
