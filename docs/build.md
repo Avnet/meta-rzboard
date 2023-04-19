@@ -25,7 +25,7 @@ Download the following packages from the Renesas Website:
 |---|---|---|---|---|
 |1| RZ/V Verified Linux Package | v3.0.0-update2 | RTK0EF0045Z0024AZJ-v3.0.0-update2.zip | https://www.renesas.com/us/en/document/sws/rzv-verified-linux-package-v300-update2rtk0ef0045z0024azj-v300-update2zip |
 | 2 | RZ MPU Graphics Library | Evaluation Version V1.2 | RTK0EF0045Z13001ZJ-v1.21_EN.zip | https://www.renesas.com/sg/en/document/sws/rz-mpu-graphics-library-evaluation-version-v121-rzg2l-rzg2lc-and-rzv2l-rtk0ef0045z13001zj-v121enzip |
-| 3 | RZ MPU Codec Library | Evaluation Version V1.0 | RTK0EF0045Z15001ZJ-v1.0_EN.zip | [https://www.renesas.com/us/en/document/sws/rz-mpu-video-codec-library-evaluation-version-v058-rzg2l-and-rzv2l-rtk0ef0045z15001zj-v058enzip](https://www.renesas.com/jp/en/document/sws/rz-mpu-video-codec-library-evaluation-version-v10-rzg2l?language=en&r=1467981) |
+| 3 | RZ MPU Codec Library | Evaluation Version V1.0 | RTK0EF0045Z15001ZJ-v1.0_EN.zip | [https://www.renesas.com/jp/en/document/sws/rz-mpu-video-codec-library-evaluation-version-v10-rzg2l?language=en&r=1467981](https://www.renesas.com/jp/en/document/sws/rz-mpu-video-codec-library-evaluation-version-v10-rzg2l?language=en&r=1467981) |
 | 4 | RZ/V2L DRP-AI Support Package | V7.20 | r11an0549ej0720-rzv2l-drpai-sp.zip | https://www.renesas.com/sg/en/document/sws/rzv2l-drp-ai-support-package-version-720?r=1558356 |
 | 5 | RZ/V2L ISP Support Package | V1.20 | r11an0561ej0120-rzv2l-isp-sp.zip | https://www.renesas.com/us/en/document/sws/rzv2l-isp-support-package-version-120 |
 | 6 | RZ/V2L Multi-OS Package | V1.02 | r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip | https://www.renesas.com/us/en/document/sws/rzv2l-multi-os-package-v102?r=1570181 |
