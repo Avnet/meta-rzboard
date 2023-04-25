@@ -7,11 +7,11 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}/:"
 COMPATIBLE_MACHINE = "(smarc-rzg2l|smarc-rzv2l|rzv2l-dev|rzboard)"
 
 KERNEL_URL = "${RZBOARD_GIT_HOST_MIRROR}/renesas-linux-cip.git"
-BRANCH = "rzboard_v2l_v5.10"
-SRCREV = "51ea568d6df0b0a58283e879c638226290845bee"
+BRANCH = "rzboard_v2l_v5.10_no_isp"
+SRCREV = "7946db09c58adf060ed4ff71ac3fbf983dcab834"
 
 SRC_URI = "${KERNEL_URL};${RZBOARD_GIT_PROTOCOL};nocheckout=1;branch=${BRANCH};${RZBOARD_GIT_USER}"
-
+SRC_URI += " file://imx219.patch"
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 LINUX_VERSION ?= "5.10.83"
 

@@ -58,6 +58,7 @@ IMAGE_INSTALL_append = " \
     bluez5 \
     bluez5-dev \
     rzboard-firmware \
+    rzboard-demo-launcher \
 "
 
 CORE_IMAGE_EXTRA_INSTALL += " packagegroup-tools-bluetooth "
@@ -65,21 +66,6 @@ CORE_IMAGE_EXTRA_INSTALL += " packagegroup-tools-bluetooth "
 # Add app demos
 IMAGE_INSTALL_append = " drpai-app-demos rzboard-app-script"
 IMAGE_INSTALL_append = " usb-camera-http-demo"
-
-unzip_drpai_demo() {
-    DEMO_FILE=app_demos.tar.bz2
-    DEMO_HTTP=usbcam_http.tar.bz2
-
-    if [ -e ${IMAGE_ROOTFS}/home/root/${DEMO_FILE} ] ; then
-        tar -x -j -f ${IMAGE_ROOTFS}/home/root/${DEMO_FILE} -C ${IMAGE_ROOTFS}/home/root/
-        rm ${IMAGE_ROOTFS}/home/root/${DEMO_FILE}
-    fi
-    if [ -e ${IMAGE_ROOTFS}/home/root/${DEMO_HTTP} ] ; then
-        tar -x -j -f ${IMAGE_ROOTFS}/home/root/${DEMO_HTTP} -C ${IMAGE_ROOTFS}/home/root/
-        rm ${IMAGE_ROOTFS}/home/root/${DEMO_HTTP}
-    fi
-}
-ROOTFS_POSTPROCESS_COMMAND += "unzip_drpai_demo; "
 
 # Add extra packages for RzBoard
 inherit extrausers

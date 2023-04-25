@@ -6,7 +6,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 DEMO_FILE  =  "app_demos_v7.20.tar.bz2"
-SRC_URI = "https://avtinc.sharepoint.com/:u:/t/ET-Downloads/EWFEYue2icpHtdo1bGOZeZsBCMbdPQLO8NdHuLiv2CNHZw?download=1;downloadfilename=${DEMO_FILE};unpack=0;name=demo;subdir=demo_save "
+SRC_URI = "https://avtinc.sharepoint.com/:u:/t/ET-Downloads/EWFEYue2icpHtdo1bGOZeZsBCMbdPQLO8NdHuLiv2CNHZw?download=1;downloadfilename=${DEMO_FILE};unpack=1;name=demo;subdir=demo_save "
 SRC_URI[demo.sha256sum] = "3250771db905dba822bb062d80931af60c5f0d500a089a536c7db03ef6485d7b"
 
 APP_INSTALL_DIRECTORY ?= "${ROOT_HOME}"
@@ -18,7 +18,7 @@ S = "${WORKDIR}"
 
 do_install() {
 	install -d ${D}${APP_INSTALL_DIRECTORY}
-	install -m 0644 ${S}/demo_save/${DEMO_FILE}       ${D}${APP_INSTALL_DIRECTORY}/app_demos.tar.bz2
+	cp -r ${S}/demo_save/app_demos ${D}${APP_INSTALL_DIRECTORY}
 }
 
 INSANE_SKIP_${PN} += "file-rdeps"
