@@ -84,7 +84,7 @@ LIC_FILES_CHKSUM = "file://node_modules/ms/license.md;md5=fd56fd5f1860961dfa92d3
                     file://node_modules/http-errors/LICENSE;md5=607209623abfcc77b9098f71a0ef52f9 \
                     file://node_modules/inherits/LICENSE;md5=5b2ef2247af6d355ae9d9f988092d470 \
                     file://node_modules/express-ws/LICENSE;md5=3a133f552782a1e694ed13c57356190d \
-                    file://package.json;md5=ffb33dab448918a13edccce9b7b990ed \
+                    file://package.json;md5=6b44cfbb1dc85de71a782710a5dcabd3 \
                     file://node_modules/accepts/package.json;md5=32a15d6909fcae63e52d8664593d32d5 \
                     file://node_modules/array-flatten/package.json;md5=cb1aa7f817100a03395dd0163bf6ebe9 \
                     file://node_modules/body-parser/package.json;md5=fdd15e03ca10273d11b7d5cac72a3726 \
@@ -152,13 +152,13 @@ LIC_FILES_CHKSUM = "file://node_modules/ms/license.md;md5=fd56fd5f1860961dfa92d3
                     file://node_modules/xterm-addon-fit/package.json;md5=04ae8acf74c45138c8b8f5e48a0f8a27"
 
 SRC_URI = " \
-    git://github.com/erstoddard/rzboard_demo_launcher.git;branch=main \
+    git://github.com/avnet/rzboard_demo_launcher.git;branch=main \
     npmsw://${THISDIR}/${BPN}/npm-shrinkwrap.json \
     "
 
 # Modify these as desired
 PV = "1.0.0+git${SRCPV}"
-SRCREV = "c2fc4357415c392cf4eecf4294fa9762b3f19597"
+SRCREV = "64281e9c66ca936cc9e1e83065515999c5033d60"
 
 S = "${WORKDIR}/git"
 
