@@ -2,7 +2,7 @@
 
 This is a meta-layer for Avnet RzBoard.
 
-- Yocto dunfell 3.1.14 support:  Avnet RzBoard
+- Yocto dunfell 3.1.17 support:  Avnet RzBoard
 
 
 
@@ -41,12 +41,12 @@ The following packages should be download:
 
 | Package Name                  | Version                    | Download File                               |
 | ----------------------------- | -------------------------- | ------------------------------------------- |
-| RZ/V Verified Linux Package   | V3.0.0-update2             | RTK0EF0045Z0024AZJ-v3.0.0-update2.zip       |
-| RZ MPU Graphics Library       | Unrestricted Version V1.21 | RTK0EF0045Z14001ZJ-v1.21_EN.zip             |
-| RZ MPU Codec Library          | Unrestricted Version V1.0  | RTK0EF0045Z16001ZJ-v1.0_rzg_EN.zip             |
-| RZ/V2L DRP-AI Support Package | V7.20                      | r11an0549ej0720-rzv2l-drpai-sp.zip          |
-| RZ/V2L ISP Support Package    | V1.20                      | r11an0561ej0120-rzv2l-isp-sp.zip            |
-| RZ/V2L Multi-OS Package       | V1.02                      | r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip |
+| RZ/V Verified Linux Package   | V3.0.2             | RTK0EF0045Z0024AZJ-v3.0.2.zip       |
+| RZ MPU Graphics Library       | Unrestricted Version V1.4 | RTK0EF0045Z14001ZJ-v1.4_rzv_EN.zip             |
+| RZ MPU Codec Library          | Unrestricted Version V1.0.1  | RTK0EF0045Z16001ZJ-v1.0.1_rzv_EN.zip             |
+| RZ/V2L DRP-AI Support Package | V7.30                      | r11an0549ej0730-rzv2l-drpai-sp.zip          |
+| RZ/V2L ISP Support Package    | V1.21                      | r11an0561ej0121-rzv2l-isp-sp.zip            |
+| RZ/V2L Multi-OS Package       | V1.10                      | r01an6238ej0110-rzv2l-cm33-multi-os-pkg.zip |
 
 ***Note***: *The Renesas website provides two version packages, "Evaluation Version" and "Unrestricted Version", for each of the **Graphics Library** and the **Codec Library**. It is recommended to download the **Unrestricted Version**, as the Evaluation Version contains a time limitation that stops the software after a few hours.*
 
@@ -63,13 +63,13 @@ After getting all the packages, copy them to **the home directory ( ~/ )** and p
 Download a script to extract the file
 ```bash
 $ cd ~/
-$ wget https://raw.githubusercontent.com/Avnet/meta-rzboard/rzboard_dunfell_5.10/tools/create_yocto_rz_src.sh
+$ wget https://raw.githubusercontent.com/Avnet/meta-rzboard/rzboard_dunfell_5.10_v2/tools/create_yocto_rz_src.sh
 $ chmod a+x create_yocto_rz_src.sh
 $ ls ~/
-create_yocto_rz_src.sh                       RTK0EF0045Z0024AZJ-v3.0.0-update2.zip
-r01an6238ej0102-rzv2l-cm33-multi-os-pkg.zip  RTK0EF0045Z14001ZJ-v1.21_EN.zip
-r11an0549ej0720-rzv2l-drpai-sp.zip           RTK0EF0045Z16001ZJ-v1.0_rzg_EN.zip
-r11an0561ej0120-rzv2l-isp-sp.zip
+create_yocto_rz_src.sh                       RTK0EF0045Z0024AZJ-v3.0.2.zip
+r01an6238ej0110-rzv2l-cm33-multi-os-pkg.zip  RTK0EF0045Z14001ZJ-v1.4_rzv_EN.zip
+r11an0549ej0730-rzv2l-drpai-sp.zip           RTK0EF0045Z16001ZJ-v1.0.1_rzv_EN.zip
+r11an0561ej0121-rzv2l-isp-sp.zip
 ```
 Run the script to generate **yocto_rzboard/** directory
 ```bash

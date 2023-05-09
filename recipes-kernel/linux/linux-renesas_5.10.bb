@@ -7,13 +7,13 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}/:"
 COMPATIBLE_MACHINE = "(smarc-rzg2l|smarc-rzv2l|rzv2l-dev|rzboard)"
 
 KERNEL_URL = "${RZBOARD_GIT_HOST_MIRROR}/renesas-linux-cip.git"
-BRANCH = "rzboard_v2l_v5.10"
-SRCREV = "51ea568d6df0b0a58283e879c638226290845bee"
+BRANCH = "rzboard_v2l_v5.10.145"
+SRCREV = "0b66aac3dd4fbe26bf9b968358ed3a9c9eea6a38"
 
 SRC_URI = "${KERNEL_URL};${RZBOARD_GIT_PROTOCOL};nocheckout=1;branch=${BRANCH};${RZBOARD_GIT_USER}"
 
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
-LINUX_VERSION ?= "5.10.83"
+LINUX_VERSION ?= "5.10.145"
 
 PV = "${LINUX_VERSION}+git${SRCPV}"
 PR = "r1"
