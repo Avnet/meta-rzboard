@@ -85,7 +85,7 @@ meta-multi-os  meta-qt5           meta-rz-features  poky
 
 ```bash
 $ cd ~/yocto_rzboard
-$ git clone https://github.com/Avnet/meta-rzboard.git -b rzboard_dunfell_5.10
+$ git clone https://github.com/Avnet/meta-rzboard.git -b rzboard_dunfell_5.10_v2
 ```
 
 So far, all the yocto related sources are in place.
@@ -104,7 +104,7 @@ meta-multi-os  meta-qt5           meta-rz-features  meta-virtualization
 
 ```bash
 $ cd ~/yocto_rzboard
-$ mkdir -p ~/yocto_rzboard/build/conf
+$ mkdir -p ./build/conf
 $ cp meta-rzboard/conf/rzboard/* build/conf/
 $ ls build/conf/
 bblayers.conf  local.conf
