@@ -12,10 +12,9 @@ Refer to the following description for different boards.
 |       Config          | Value if set |     To be loading
 |-----------------------|--------------|------------------------------
 | enable_overlay_disp   |  'hdmi'      |  rzboard-hdmi.dtbo
-|                       |  'mipi'      |  rzboard-mipi.dtbo
+|                       |  'mipi'      |  rzboard-mipi.dtbo (not supported)
 |-----------------------|--------------|------------------------------
 | enable_overlay_camera |  'ov5640'    |  rzboard-ov5640.dtbo
-|                       |  'as0260'    |  rzboard-as0260.dtbo
 |-----------------------|--------------|------------------------------
 | enable_overlay_adc    | '1' or 'yes' |  rzboard-adc.dtbo
 |-----------------------|--------------|------------------------------
@@ -41,5 +40,6 @@ Refer to the following description for different boards.
 default setting:
     fdtfile=rzboard.dtb
     enable_overlay_disp=hdmi
+    #fdt_extra_overlays=rzboard-mipi-ph720128t003.dtbo
     #fdt_extra_overlays=1.dtbo 2.dtbo 3.dtbo
     #ethaddr=aa:bb:cc:aa:bb:cc
