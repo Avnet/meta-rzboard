@@ -12,7 +12,7 @@ Refer to the following description for different boards.
 |       Config          | Value if set |     To be loading
 |-----------------------|--------------|------------------------------
 | enable_overlay_disp   |  'hdmi'      |  rzboard-hdmi.dtbo
-|                       |  'mipi'      |  rzboard-mipi.dtbo (not supported)
+|                       |  'mipi'      |  rzboard-mipi.dtbo
 |-----------------------|--------------|------------------------------
 | enable_overlay_camera |  'ov5640'    |  rzboard-ov5640.dtbo
 |-----------------------|--------------|------------------------------
