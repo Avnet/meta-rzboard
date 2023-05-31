@@ -12,6 +12,12 @@ SRCREV = "af8fe024cdc04df065591f7aa2983339e3066ea0"
 
 SRC_URI = "${KERNEL_URL};${RZBOARD_GIT_PROTOCOL};nocheckout=1;branch=${BRANCH};${RZBOARD_GIT_USER}"
 
+# Patches
+SRC_URI_append = "\
+    file://imx219.patch \
+    ${@oe.utils.conditional("REMOVE_SIMPLE_ISP", "1", " file://0001-Revert-ISP-CODE-RZ-Add-ISP-Support-Package-with-kern.patch ", "", d)} \
+"
+
 LIC_FILES_CHKSUM = "file://COPYING;md5=6bc538ed5bd9a7fc9398086aedcd7e46"
 LINUX_VERSION ?= "5.10.145"
 
