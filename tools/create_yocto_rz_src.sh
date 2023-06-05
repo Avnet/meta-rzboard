@@ -20,9 +20,6 @@ REN_VEDIO_CODEC_LIB_PKG_EVAL="RTK0EF0045Z15001ZJ-v1.0.1_EN"
 # RZ/V2L DRP-AI Support Package Version 7.30
 REN_V2L_DRPAI_PKG="r11an0549ej0730-rzv2l-drpai-sp"
 
-# RZ/V2L ISP Support Package Version 1.21
-REN_V2L_ISP_PKG="r11an0561ej0121-rzv2l-isp-sp"
-
 # RZ/V2L Multi-OS Package V1.10
 REN_V2L_MULTI_OS_PKG="r01an6238ej0110-rzv2l-cm33-multi-os-pkg"
                    
@@ -41,7 +38,6 @@ function main_process(){
 	unpack_gpu
 	unpack_codec
 	unpack_drpai
-	unpack_isp
 	unpack_multi_os
 	remove_redundant_patches
 	echo ""
@@ -97,12 +93,6 @@ check_pkg_require(){
 		log_error "Please download 'RZ/V2L DRP-AI Support Package' from Renesas RZ/V2L Website"
 		echo ""
 		check=4
-	fi
-	if [ ! -e ${REN_V2L_ISP_PKG}${SUFFIX_ZIP} ];then
-		log_error "Error: Cannot found ${REN_V2L_ISP_PKG}${SUFFIX_ZIP} !"
-		log_error "Please download 'RZ/V2L ISP Support Package' from Renesas RZ/V2L Website"
-		echo ""
-		check=5
 	fi
 	if [ ! -e ${REN_V2L_MULTI_OS_PKG}${SUFFIX_ZIP} ];then
 		log_error "Error: Cannot found ${REN_V2L_MULTI_OS_PKG}${SUFFIX_ZIP} !"
@@ -183,15 +173,6 @@ function unpack_drpai(){
 	local drpai="meta-rz-features*.tar.gz"
 
 	extract_to_meta ${pkg_file} ${zip_dir} ${drpai} ${YOCTO_HOME}
-	rm -fr ${zip_dir}
-}
-
-function unpack_isp(){
-	local pkg_file=${WORKSPACE}/${REN_V2L_ISP_PKG}${SUFFIX_ZIP}
-	local zip_dir="REN_V2L_ISP"
-	local isp="meta-rz-features*.tar.gz"
-
-	extract_to_meta ${pkg_file} ${zip_dir} ${isp} ${YOCTO_HOME}
 	rm -fr ${zip_dir}
 }
 

@@ -19,7 +19,6 @@ require include/drpai/extend_packages.inc
 
 IMAGE_INSTALL_append = " opencv opencv-dev "
 ##TOOLCHAIN_TARGET_TASK_append = " drpai "
-TOOLCHAIN_TARGET_TASK_append = " isp "
 
 # Add CM33 example
 IMAGE_INSTALL_append = " cm33"
