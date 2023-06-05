@@ -115,4 +115,5 @@ $ source poky/oe-init-build-env build/
 $ bitbake avnet-core-image
 ```
 After the build is successfully completed, the output files will be located in build/tmp/deploy/images/rzboard/ directory.
+
 For more information about Edge Impulse, including installing Edge Impulse Linux CLI, please refer to [the link](https://docs.edgeimpulse.com/docs/development-platforms/officially-supported-cpu-gpu-targets/renesas-rz-v2l).
