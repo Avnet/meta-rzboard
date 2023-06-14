@@ -35,27 +35,29 @@ $ git config --global user.email "you@example.com"
 
 * ##### **Download Renesas software packages**
 
-Due to licensing restrictions on the Renesas website, users are required to download the software packages from the [Official RZ/V2L Website](https://www.renesas.cn/us/en/products/microcontrollers-microprocessors/rz-mpus/rzv2l-general-purpose-microprocessor-equipped-renesas-original-ai-accelerator-drp-ai-12ghz-dual) in person.
+Due to licensing restrictions on the Renesas website, users are required to download the software packages from the [Official RZ/V2L Website](https://www.renesas.com/us/en/products/microcontrollers-microprocessors/rz-mpus/rzv2l-general-purpose-microprocessor-equipped-renesas-original-ai-accelerator-drp-ai-12ghz-dual) in person.
 
 The following packages should be download:
 
 | Package Name                  | Version                    | Download File                               |
 | ----------------------------- | -------------------------- | ------------------------------------------- |
-| RZ/V Verified Linux Package   | V3.0.2             | RTK0EF0045Z0024AZJ-v3.0.2.zip       |
-| RZ MPU Graphics Library       | Unrestricted Version V1.4 | RTK0EF0045Z14001ZJ-v1.4_rzv_EN.zip             |
-| RZ MPU Codec Library          | Unrestricted Version V1.0.1  | RTK0EF0045Z16001ZJ-v1.0.1_rzv_EN.zip             |
-| RZ/V2L DRP-AI Support Package | V7.30                      | r11an0549ej0730-rzv2l-drpai-sp.zip          |
-| RZ/V2L Multi-OS Package       | V1.10                      | r01an6238ej0110-rzv2l-cm33-multi-os-pkg.zip |
+| RZ/V Verified Linux Package   | V3.0.2             | [RTK0EF0045Z0024AZJ-v3.0.2.zip](https://www.renesas.com/us/en/document/swo/rzv-verified-linux-package-v302rtk0ef0045z0024azj-v302zip?r=1628526) |
+| RZ MPU Graphics Library       | Evaluation Version V1.4 | [RTK0EF0045Z13001ZJ-v1.4_EN.zip](https://www.renesas.com/us/en/document/swo/rz-mpu-graphics-library-evaluation-version-rzv2l-rtk0ef0045z13001zj-v14enzip?r=1843541) |
+| RZ MPU Codec Library          | Evaluation Version V1.0.1 | [RTK0EF0045Z15001ZJ-v1.0.1_EN.zip](https://www.renesas.com/us/en/document/swo/rz-mpu-video-codec-library-evaluation-version-rzv2l-rtk0ef0045z15001zj-v101enzip?r=1844066) |
+| RZ/V2L DRP-AI Support Package | V7.30                      | [r11an0549ej0730-rzv2l-drpai-sp.zip](https://www.renesas.com/us/en/document/sws/rzv2l-drp-ai-support-package-version-730?r=1558356) |
+| RZ/V2L Multi-OS Package       | V1.10                      | [r01an6238ej0110-rzv2l-cm33-multi-os-pkg.zip](https://www.renesas.com/us/en/document/sws/rzv2l-cm33-multi-os-package-v110?r=1570181) |
 
-***Note***: *The Renesas website provides two version packages, "Evaluation Version" and "Unrestricted Version", for each of the **Graphics Library** and the **Codec Library**. It is recommended to download the **Unrestricted Version**, as the Evaluation Version contains a time limitation that stops the software after a few hours.*
+> ***Note***: 
+> *1  The Renesas website provides two version packages, "**Evaluation Version**" and "**Unrestricted Version**", for each of the RZ MPU Graphics Library and the RZ MPU Codec Library.*
+> *2  The "**Evaluation Version**" can be downloaded immediately, but has a 2 hour timeout after every board boot.*
+> *3  The "**Unrestricted Versions**"  is not available for download until the request for permission on the Renesas website is complete.*
+
 
 For more information please refer to [RZ/V2L Wiki](https://renesas.info/wiki/RZ-V/RZ-V2L_SMARC) and [RZ/V2 Linux BSP](https://renesas.info/wiki/RZ-G/RZ-G2_BSP).
 
 
 
 After getting all the packages, copy them to **the home directory ( ~/ )** and prepare for the next step.
-
-
 
 * ##### **Extract Renesas software packages**
 
@@ -66,8 +68,8 @@ $ wget https://raw.githubusercontent.com/Avnet/meta-rzboard/rzboard_dunfell_5.10
 $ chmod a+x create_yocto_rz_src.sh
 $ ls ~/
 create_yocto_rz_src.sh                       RTK0EF0045Z0024AZJ-v3.0.2.zip
-r01an6238ej0110-rzv2l-cm33-multi-os-pkg.zip  RTK0EF0045Z14001ZJ-v1.4_rzv_EN.zip
-r11an0549ej0730-rzv2l-drpai-sp.zip           RTK0EF0045Z16001ZJ-v1.0.1_rzv_EN.zip
+r01an6238ej0110-rzv2l-cm33-multi-os-pkg.zip  RTK0EF0045Z13001ZJ-v1.4_EN.zip
+r11an0549ej0730-rzv2l-drpai-sp.zip           RTK0EF0045Z15001ZJ-v1.0.1_EN.zip
 ```
 Run the script to generate **yocto_rzboard/** directory
 ```bash
