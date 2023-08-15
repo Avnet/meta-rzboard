@@ -1,0 +1,9 @@
+[Unit]
+Description=RZBoard Web Demo Interace
+
+[Service]
+ExecStart=/usr/bin/node /usr/lib/node_modules/rzboard_demo_launcher/index.js /home/root/demos
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

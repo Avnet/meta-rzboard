@@ -63,7 +63,12 @@ IMAGE_INSTALL_append = " \
 CORE_IMAGE_EXTRA_INSTALL += " packagegroup-tools-bluetooth "
 
 # Add app demos
-IMAGE_INSTALL_append = " drpai-app-demos rzboard-app-script"
+IMAGE_INSTALL_append = " \
+	drpai-app-demos \
+	usb-camera-http-demo \
+	rzboard-app-script \
+	rzboard-demo-launcher \
+"
 
 unzip_drpai_demo() {
     DEMO_FILE=app_demos.tar.bz2
