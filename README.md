@@ -45,7 +45,7 @@ The following packages should be download:
 | RZ MPU Graphics Library       | Evaluation Version V1.4 | [RTK0EF0045Z13001ZJ-v1.4_EN.zip](https://www.renesas.com/us/en/document/swo/rz-mpu-graphics-library-evaluation-version-rzv2l-rtk0ef0045z13001zj-v14enzip?r=1843541) |
 | RZ MPU Codec Library          | Evaluation Version V1.0.1 | [RTK0EF0045Z15001ZJ-v1.0.1_EN.zip](https://www.renesas.com/us/en/document/swo/rz-mpu-video-codec-library-evaluation-version-rzv2l-rtk0ef0045z15001zj-v101enzip?r=1844066) |
 | RZ/V2L DRP-AI Support Package | V7.30                      | [r11an0549ej0730-rzv2l-drpai-sp.zip](https://www.renesas.com/us/en/document/sws/rzv2l-drp-ai-support-package-version-730?r=1558356) |
-| RZ/V2L Multi-OS Package       | V1.10                      | [r01an6238ej0110-rzv2l-cm33-multi-os-pkg.zip](https://www.renesas.com/us/en/document/sws/rzv2l-cm33-multi-os-package-v110?r=1570181) |
+| RZ/V2L Multi-OS Package       | V1.10                      | [r01an6238ej0110-rzv2l-cm33-multi-os-pkg.zip](https://www.renesas.com/us/en/document/sws/rzv-multi-os-package-v110) |
 
 > ***Note***: 
 > *1  The Renesas website provides two version packages, "**Evaluation Version**" and "**Unrestricted Version**", for each of the RZ MPU Graphics Library and the RZ MPU Codec Library.*
