@@ -1,30 +1,27 @@
 #!/bin/bash
 
-VERSION=0.2.0
+VERSION=0.3.0
 
 # Make sure that the following packages have been downloaded from the official website
-# RZ/V Verified Linux Package [5.10-CIP]  V3.0.2
-REN_LINUX_BSP_PKG="RTK0EF0045Z0024AZJ-v3.0.2"
+# RZ/V Verified Linux Package [5.10-CIP]  V3.0.4
+REN_LINUX_BSP_PKG="RTK0EF0045Z0024AZJ-v3.0.4"
 SUFFIX_ZIP=".zip"
 
-# RZ MPU Graphics Library V1.4 Unrestricted Version
-REN_GPU_MALI_LIB_PKG="RTK0EF0045Z14001ZJ-v1.4_rzv_EN"
-# RZ MPU Graphics Library Evaluation Version V1.4
-REN_GPU_MALI_LIB_PKG_EVAL="RTK0EF0045Z13001ZJ-v1.4_EN"
+# RZ MPU Graphics Library V1.1.0 Unrestricted Version
+REN_GPU_MALI_LIB_PKG="RTK0EF0045Z14001ZJ-v1.1.0_rzv_EN"
+# RZ MPU Graphics Library Evaluation Version V1.1.0
+REN_GPU_MALI_LIB_PKG_EVAL="RTK0EF0045Z13001ZJ-v1.1.0_EN"
 
-# RZ MPU Video Codec Library v1.0.1 Unrestricted Version
-REN_VEDIO_CODEC_LIB_PKG="RTK0EF0045Z16001ZJ-v1.0.1_rzv_EN"
-# RZ MPU Video Codec Library Evaluation Version V1.0.1
-REN_VEDIO_CODEC_LIB_PKG_EVAL="RTK0EF0045Z15001ZJ-v1.0.1_EN"
+# RZ MPU Video Codec Library V1.1.0 Unrestricted Version
+REN_VEDIO_CODEC_LIB_PKG="RTK0EF0045Z16001ZJ-v1.1.0_rzv_EN"
+# RZ MPU Video Codec Library Evaluation Version V1.1.0
+REN_VEDIO_CODEC_LIB_PKG_EVAL="RTK0EF0045Z15001ZJ-v1.1.0_EN"
 
-# RZ/V2L DRP-AI Support Package Version 7.30
-REN_V2L_DRPAI_PKG="r11an0549ej0730-rzv2l-drpai-sp"
+# RZ/V2L DRP-AI Support Package Version 7.40
+REN_V2L_DRPAI_PKG="r11an0549ej0740-rzv2l-drpai-sp"
 
-# RZ/V2L ISP Support Package Version 1.21
-REN_V2L_ISP_PKG="r11an0561ej0121-rzv2l-isp-sp"
-
-# RZ/V2L Multi-OS Package V1.10
-REN_V2L_MULTI_OS_PKG="r01an6238ej0110-rzv2l-cm33-multi-os-pkg"
+# RZ/V2L Multi-OS Package V1.11
+REN_V2L_MULTI_OS_PKG="r01an6238ej0111-rzv2l-cm33-multi-os-pkg"
                    
 # ----------------------------------------------------------------
 
@@ -41,7 +38,6 @@ function main_process(){
 	unpack_gpu
 	unpack_codec
 	unpack_drpai
-	unpack_isp
 	unpack_multi_os
 	remove_redundant_patches
 	echo ""
@@ -98,12 +94,6 @@ check_pkg_require(){
 		echo ""
 		check=4
 	fi
-	if [ ! -e ${REN_V2L_ISP_PKG}${SUFFIX_ZIP} ];then
-		log_error "Error: Cannot found ${REN_V2L_ISP_PKG}${SUFFIX_ZIP} !"
-		log_error "Please download 'RZ/V2L ISP Support Package' from Renesas RZ/V2L Website"
-		echo ""
-		check=5
-	fi
 	if [ ! -e ${REN_V2L_MULTI_OS_PKG}${SUFFIX_ZIP} ];then
 		log_error "Error: Cannot found ${REN_V2L_MULTI_OS_PKG}${SUFFIX_ZIP} !"
 		log_error "Please download 'RZ/V2L Group Multi-OS Package' from Renesas RZ/V2L Website"
@@ -139,7 +129,7 @@ function extract_to_meta(){
 function unpack_bsp(){
 	local pkg_file=${WORKSPACE}/${REN_LINUX_BSP_PKG}${SUFFIX_ZIP}
 	local zip_dir="REN_LINUX_BSP"
-	local bsp="rzv*_bsp_v*.tar.gz"
+	local bsp="rzv*_v*.tar.gz"
 	local bsp_patch=""
 
 	extract_to_meta ${pkg_file} ${zip_dir} ${bsp} ${YOCTO_HOME}
@@ -154,7 +144,7 @@ function unpack_bsp(){
 function unpack_gpu(){
 	local pkg_file=${WORKSPACE}/${REN_GPU_MALI_LIB_PKG}${SUFFIX_ZIP}
 	local zip_dir="REN_GPU_MALI"
-	local gpu="meta-rz-features*.tar.gz"
+	local gpu="meta-rz*_v*.tar.gz"
 
 	if [ ! -e ${REN_GPU_MALI_LIB_PKG}${SUFFIX_ZIP} ]; then
 		pkg_file=${WORKSPACE}/${REN_GPU_MALI_LIB_PKG_EVAL}${SUFFIX_ZIP}
@@ -167,7 +157,7 @@ function unpack_gpu(){
 function unpack_codec(){
 	local pkg_file=${WORKSPACE}/${REN_VEDIO_CODEC_LIB_PKG}${SUFFIX_ZIP}
 	local zip_dir="REN_VEDIO_CODEC"
-	local codec="meta-rz-features*.tar.gz"
+	local codec="meta-rz*_v*.tar.gz"
 
 	if [ ! -e ${REN_VEDIO_CODEC_LIB_PKG}${SUFFIX_ZIP} ]; then
 		pkg_file=${WORKSPACE}/${REN_VEDIO_CODEC_LIB_PKG_EVAL}${SUFFIX_ZIP}
@@ -180,32 +170,19 @@ function unpack_codec(){
 function unpack_drpai(){
 	local pkg_file=${WORKSPACE}/${REN_V2L_DRPAI_PKG}${SUFFIX_ZIP}
 	local zip_dir="REN_V2L_DRPAI"
-	local drpai="meta-rz-features*.tar.gz"
+	local drpai="meta-rz*.tar.gz"
 
 	extract_to_meta ${pkg_file} ${zip_dir} ${drpai} ${YOCTO_HOME}
-	rm -fr ${zip_dir}
-}
-
-function unpack_isp(){
-	local pkg_file=${WORKSPACE}/${REN_V2L_ISP_PKG}${SUFFIX_ZIP}
-	local zip_dir="REN_V2L_ISP"
-	local isp="meta-rz-features*.tar.gz"
-
-	extract_to_meta ${pkg_file} ${zip_dir} ${isp} ${YOCTO_HOME}
 	rm -fr ${zip_dir}
 }
 
 function unpack_multi_os(){
 	local pkg_file=${WORKSPACE}/${REN_V2L_MULTI_OS_PKG}${SUFFIX_ZIP}
 	local zip_dir="REN_MULTI_OS"
-	local rtos="meta-rz-features*.tar.gz"
+	local rtos="meta-rz*.tar.gz"
 
-	extract_to_meta ${pkg_file} ${zip_dir} ${rtos} ${zip_dir}
-	cp -ar ${WORKSPACE}/${zip_dir}/meta-rz-features ${YOCTO_HOME}/meta-multi-os
+	extract_to_meta ${pkg_file} ${zip_dir} ${rtos} ${YOCTO_HOME}
 	rm -fr ${zip_dir}
-
-	# replace the layer name
-	sed -i 's/rz-features/multi-os/g' ${YOCTO_HOME}/meta-multi-os/conf/layer.conf
 }
 
 function remove_redundant_patches(){

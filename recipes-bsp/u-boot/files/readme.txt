@@ -15,6 +15,7 @@ Refer to the following description for different boards.
 |                       |  'mipi'      |  rzboard-mipi.dtbo
 |-----------------------|--------------|------------------------------
 | enable_overlay_camera |  'ov5640'    |  rzboard-ov5640.dtbo
+|                       |  'imx219'    |  rzboard-imx219.dtbo
 |-----------------------|--------------|------------------------------
 | enable_overlay_adc    | '1' or 'yes' |  rzboard-adc.dtbo
 |-----------------------|--------------|------------------------------
