@@ -14,12 +14,10 @@ require include/core-image-renesas-mmp.inc
 require include/core-image-bsp.inc
 
 # Add DRP-AI packages
-require include/drpai/core-image-sdk.inc
-require include/drpai/extend_packages.inc
+require include/core-image-sdk.inc
+require include/extend_packages.inc
 
-IMAGE_INSTALL_append = " opencv opencv-dev "
-##TOOLCHAIN_TARGET_TASK_append = " drpai "
-TOOLCHAIN_TARGET_TASK_append = " isp "
+TOOLCHAIN_TARGET_TASK_append = " drpai "
 
 # Add CM33 example
 IMAGE_INSTALL_append = " cm33"
