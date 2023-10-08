@@ -17,7 +17,8 @@ require include/core-image-bsp.inc
 require include/core-image-sdk.inc
 require include/extend_packages.inc
 
-TOOLCHAIN_TARGET_TASK_append = " drpai "
+# Remove drpai to avoid the file '/usr/include/linux/drpai.h' conflicts when do_populate_sdk
+#TOOLCHAIN_TARGET_TASK_append = " drpai "
 
 # Add CM33 example
 IMAGE_INSTALL_append = " cm33"
