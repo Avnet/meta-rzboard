@@ -47,9 +47,9 @@ The following packages should be download:
 | RZ/V2L DRP-AI Support Package | V7.40                      | [r11an0549ej0740-rzv2l-drpai-sp.zip](https://www.renesas.com/us/en/document/sws/rzv2l-drp-ai-support-package-version-740?r=1558356) |
 | RZ/V2L Multi-OS Package       | V1.11                      | [r01an6238ej0111-rzv2l-cm33-multi-os-pkg.zip](https://www.renesas.com/us/en/document/sws/rzv-multi-os-package-v111?r=1570181) |
 
-> ***Note***: 
-> *1  The Renesas website provides two version packages, "**Evaluation Version**" and "**Unrestricted Version**", for each of the RZ MPU Graphics Library and the RZ MPU Codec Library.*
-> *2  The "**Evaluation Version**" can be downloaded immediately, but has a 2 hour timeout after every board boot.*
+> ***Note***:   
+> *1  The Renesas website provides two version packages, "**Evaluation Version**" and "**Unrestricted Version**", for each of the RZ MPU Graphics Library and the RZ MPU Codec Library.*  
+> *2  The "**Evaluation Version**" can be downloaded immediately, but has a 2 hour timeout after every board boot.*   
 > *3  The "**Unrestricted Versions**"  is not available for download until the request for permission on the Renesas website is complete.*
 
 
@@ -107,7 +107,7 @@ $ cd ~/yocto_rzboard
 $ mkdir -p ./build/conf
 $ cp meta-rzboard/conf/rzboard/* build/conf/
 $ ls build/conf/
-bblayers.conf  local.conf
+bblayers.conf  local.conf  site.conf
 ```
 
 *  ##### **Build**
