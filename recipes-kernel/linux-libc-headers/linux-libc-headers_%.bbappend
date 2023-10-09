@@ -1,5 +1,3 @@
-KERNEL_URL = " ${RZBOARD_GIT_HOST_MIRROR}/renesas-linux-cip.git"
-BRANCH = "rzboard_v2l_v5.10.175"
-SRCREV = "215187ac49567965b6be0c56d17c8f58e2453b55"
+require recipes-kernel/linux/kernel-version.inc
 
 SRC_URI = "${KERNEL_URL};${RZBOARD_GIT_PROTOCOL};branch=${BRANCH};${RZBOARD_GIT_USER}"

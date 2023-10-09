@@ -1,0 +1,5 @@
+KERNEL_URL = "${RZBOARD_GIT_HOST_MIRROR}/renesas-linux-cip.git"
+BRANCH = "rzboard_v2l_v5.10.175"
+SRCREV = "c197622df526c82ae9e3674e06b4092dac33eafa"
+
+LINUX_VERSION ?= "5.10.175"
