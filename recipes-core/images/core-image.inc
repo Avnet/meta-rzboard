@@ -34,6 +34,13 @@ IMAGE_INSTALL_remove = " \
 
 ROOTFS_POSTPROCESS_COMMAND_remove= "update_issue;"
 
+IMAGE_INSTALL_append = " \
+        kernel-module-mmngr \
+        kernel-module-mmngrbuf \
+        mmngrbuf-user-module \
+        mmngr-user-module \
+"
+
 # Additional packages
 IMAGE_INSTALL_append = " \
     curl \
