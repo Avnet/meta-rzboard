@@ -1,6 +1,6 @@
 TFA_URL = "${RZBOARD_GIT_HOST_MIRROR}/trusted-firmware-a.git"
-BRANCH = "rzboard_v2.7_rz"
-SRCREV = "30635e211e443643c689eed8f4e877c9174f8c88"
+BRANCH = "rzboard_v2.9_rz"
+SRCREV = "126598cd73993f7e7f52d630d834ea0ce6c6fadd"
 
 SRC_URI_remove ="git://github.com/renesas-rz/rzg_trusted-firmware-a.git;branch=${BRANCH};protocol=https"
 SRC_URI_prepend = "${TFA_URL};branch=${BRANCH};${RZBOARD_GIT_PROTOCOL};${RZBOARD_GIT_USER}"
