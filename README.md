@@ -2,7 +2,7 @@
 
 This is a meta-layer for Avnet RzBoard.
 
-- Yocto dunfell 3.1.21 support:  Avnet RzBoard
+- Yocto dunfell 3.1.31 support:  Avnet RzBoard
 
 
 
@@ -41,11 +41,11 @@ The following packages should be download:
 
 | Package Name                  | Version                    | Download File                               |
 | ----------------------------- | -------------------------- | ------------------------------------------- |
-| RZ/V Verified Linux Package   | V3.0.4            | [RTK0EF0045Z0024AZJ-v3.0.4.zip](https://www.renesas.com/us/en/document/swo/rzv-verified-linux-package-v304rtk0ef0045z0024azj-v304zip?r=1628526) |
-| RZ MPU Graphics Library       | Evaluation Version V1.1.0 | [RTK0EF0045Z13001ZJ-v1.1.0_EN.zip](https://www.renesas.com/us/en/document/sws/rz-mpu-graphics-library-evaluation-version-rzv2l-rtk0ef0045z13001zj-v110enzip?r=1843541) |
-| RZ MPU Codec Library          | Evaluation Version V1.1.0 | [RTK0EF0045Z15001ZJ-v1.1.0_EN.zip](https://www.renesas.com/us/en/document/sws/rz-mpu-video-codec-library-evaluation-version-rzv2l-rtk0ef0045z15001zj-v110enzip?r=1844066) |
-| RZ/V2L DRP-AI Support Package | V7.40                      | [r11an0549ej0740-rzv2l-drpai-sp.zip](https://www.renesas.com/us/en/document/sws/rzv2l-drp-ai-support-package-version-740?r=1558356) |
-| RZ/V2L Multi-OS Package       | V1.11                      | [r01an6238ej0111-rzv2l-cm33-multi-os-pkg.zip](https://www.renesas.com/us/en/document/sws/rzv-multi-os-package-v111?r=1570181) |
+| RZ/V Verified Linux Package   | V3.0.6            | [RTK0EF0045Z0024AZJ-v3.0.6.zip](https://www.renesas.com/en/software-tool/rzv-verified-linux-package#Download) |
+| RZ MPU Graphics Library       | Evaluation Version V1.2.2 | [RTK0EF0045Z13001ZJ-v1.2.2_EN.zip](https://www.renesas.com/us/en/document/swo/rz-mpu-graphics-library-evaluation-version-v122-rzg2l-rzg2lc-and-rzv2l-rtk0ef0045z13001zj-v122xxzip?language=en&r=1843541) |
+| RZ MPU Codec Library          | Evaluation Version V1.2.2 | [RTK0EF0045Z15001ZJ-v1.2.2_EN.zip](https://www.renesas.com/us/en/document/swo/rz-mpu-video-codec-library-evaluation-version-v122-rzg2l-and-rzv2l-rtk0ef0045z15001zj-v122xxzip?language=en&r=1844066) |
+| RZ/V2L DRP-AI Support Package | V7.50                     | [r11an0549ej0750-rzv2l-drpai-sp.zip](https://www.renesas.com/en/document/swo/drp-ai-open-source-packageosspkgrzvdrpaiv7507z) |
+| RZ/V2L Multi-OS Package       | V2.0.0                   | [r01an7254ej0200-rzv2l-multi-os-pkg.zip](https://www.renesas.com/us/en/document/sws/rzv-multi-os-package-v200?language=en&r=1570181) |
 
 > ***Note***:   
 > *1  The Renesas website provides two version packages, "**Evaluation Version**" and "**Unrestricted Version**", for each of the RZ MPU Graphics Library and the RZ MPU Codec Library.*  
@@ -64,12 +64,12 @@ After getting all the packages, copy them to **the home directory ( ~/ )** and p
 Download a script to extract the file
 ```bash
 $ cd ~/
-$ wget https://raw.githubusercontent.com/Avnet/meta-rzboard/rzboard_dunfell_5.10_v3/tools/create_yocto_rz_src.sh
+$ wget https://raw.githubusercontent.com/Avnet/meta-rzboard/rzboard_dunfell_5.10.201/tools/create_yocto_rz_src.sh
 $ chmod a+x create_yocto_rz_src.sh
 $ ls ~/
-create_yocto_rz_src.sh                       RTK0EF0045Z0024AZJ-v3.0.4.zip
-r01an6238ej0111-rzv2l-cm33-multi-os-pkg.zip  RTK0EF0045Z13001ZJ-v1.1.0_EN.zip
-r11an0549ej0740-rzv2l-drpai-sp.zip           RTK0EF0045Z15001ZJ-v1.1.0_EN.zip
+create_yocto_rz_src.sh                       RTK0EF0045Z0024AZJ-v3.0.6.zip
+r01an7254ej0200-rzv-multi-os-pkg.zip  RTK0EF0045Z13001ZJ-v1.2.2_EN.zip
+r11an0549ej0750-rzv2l-drpai-sp.zip           RTK0EF0045Z15001ZJ-v1.2.2_EN.zip
 ```
 Run the script to generate **yocto_rzboard/** directory
 ```bash
@@ -85,7 +85,7 @@ meta-openembedded  meta-renesas  meta-virtualization
 
 ```bash
 $ cd ~/yocto_rzboard
-$ git clone https://github.com/Avnet/meta-rzboard.git -b rzboard_dunfell_5.10_v3
+$ git clone https://github.com/Avnet/meta-rzboard.git -b rzboard_dunfell_5.10_201
 ```
 
 So far, all the yocto related sources are in place.
