@@ -6,10 +6,10 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
 
 DEMO_FILE  =  "app_demos_v7.50.tar.bz2"
-DEMO_URL   =  "https://avtinc.sharepoint.com/:u:/t/ET-Downloads/EQbm5A3JdyhHkM1uoa68v60BaJppJPqWCpTFayK2KOaAsw?download=1"
+DEMO_URL   =  "https://avtinc.sharepoint.com/:u:/t/ET-Downloads/EZGR2UgE0j5FucwL5VGlgqcBxBhkz5qQ087WpKZZgRO6yQ?download=1"
+SRC_URI[demo.sha256sum] = "0bf91012f42caa033c28c9f19b3669bb046343474c9328970637cdfb77009dc6"
 
 SRC_URI    =  "${DEMO_URL};downloadfilename=${DEMO_FILE};unpack=0;name=demo;subdir=demo_save "
-SRC_URI[demo.sha256sum] = "a7c7d2950f18afa7f1c5cf1f4f9b511b8a84a1c6fd5a848e283ec26eafd8d316"
 
 APP_INSTALL_DIRECTORY ?= "${ROOT_HOME}"
 FILES_${PN} = " \
