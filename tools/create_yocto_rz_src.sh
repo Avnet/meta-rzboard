@@ -1,27 +1,27 @@
 #!/bin/bash
 
-VERSION=0.3.0
+VERSION=0.4.0
 
 # Make sure that the following packages have been downloaded from the official website
-# RZ/V Verified Linux Package [5.10-CIP]  V3.0.4
-REN_LINUX_BSP_PKG="RTK0EF0045Z0024AZJ-v3.0.4"
+# RZ/V Verified Linux Package [5.10-CIP]  V3.0.6
+REN_LINUX_BSP_PKG="RTK0EF0045Z0024AZJ-v3.0.6"
 SUFFIX_ZIP=".zip"
 
-# RZ MPU Graphics Library V1.1.0 Unrestricted Version
-REN_GPU_MALI_LIB_PKG="RTK0EF0045Z14001ZJ-v1.1.0_rzv_EN"
-# RZ MPU Graphics Library Evaluation Version V1.1.0
-REN_GPU_MALI_LIB_PKG_EVAL="RTK0EF0045Z13001ZJ-v1.1.0_EN"
+# RZ MPU Graphics Library V1.2.2 Unrestricted Version
+REN_GPU_MALI_LIB_PKG="RTK0EF0045Z14001ZJ-v1.2.2_rzv_EN"
+# RZ MPU Graphics Library Evaluation Version V1.2.2
+REN_GPU_MALI_LIB_PKG_EVAL="RTK0EF0045Z13001ZJ-v1.2.2_EN"
 
-# RZ MPU Video Codec Library V1.1.0 Unrestricted Version
-REN_VEDIO_CODEC_LIB_PKG="RTK0EF0045Z16001ZJ-v1.1.0_rzv_EN"
-# RZ MPU Video Codec Library Evaluation Version V1.1.0
-REN_VEDIO_CODEC_LIB_PKG_EVAL="RTK0EF0045Z15001ZJ-v1.1.0_EN"
+# RZ MPU Video Codec Library V1.2.2 Unrestricted Version
+REN_VEDIO_CODEC_LIB_PKG="RTK0EF0045Z16001ZJ-v1.2.2_rzv_EN"
+# RZ MPU Video Codec Library Evaluation Version V1.2.2
+REN_VEDIO_CODEC_LIB_PKG_EVAL="RTK0EF0045Z15001ZJ-v1.2.2_EN"
 
-# RZ/V2L DRP-AI Support Package Version 7.40
-REN_V2L_DRPAI_PKG="r11an0549ej0740-rzv2l-drpai-sp"
+# RZ/V2L DRP-AI Support Package Version 7.50
+REN_V2L_DRPAI_PKG="r11an0549ej0750-rzv2l-drpai-sp"
 
-# RZ/V2L Multi-OS Package V1.11
-REN_V2L_MULTI_OS_PKG="r01an6238ej0111-rzv2l-cm33-multi-os-pkg"
+# RZ/V2L Multi-OS Package V1.20
+REN_V2L_MULTI_OS_PKG="r01an7254ej0200_rzv-multi-os-pkg"
                    
 # ----------------------------------------------------------------
 
