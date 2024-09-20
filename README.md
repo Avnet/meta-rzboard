@@ -41,7 +41,7 @@ The following packages should be download:
 
 | Package Name                  | Version                    | Download File                               |
 | ----------------------------- | -------------------------- | ------------------------------------------- |
-| RZ/V Verified Linux Package   | V3.0.6            | [RTK0EF0045Z0024AZJ-v3.0.6.zip](https://www.renesas.com/en/software-tool/rzv-verified-linux-package#Download) |
+| RZ/V Verified Linux Package   | V3.0.6            | [RTK0EF0045Z0024AZJ-v3.0.6.zip](https://www.renesas.com/en/document/swo/rzv-verified-linux-package-v306rtk0ef0045z0024azj-v306zip?r=1628526) |
 | RZ MPU Graphics Library       | Evaluation Version V1.2.2 | [RTK0EF0045Z13001ZJ-v1.2.2_EN.zip](https://www.renesas.com/us/en/document/swo/rz-mpu-graphics-library-evaluation-version-v122-rzg2l-rzg2lc-and-rzv2l-rtk0ef0045z13001zj-v122xxzip?language=en&r=1843541) |
 | RZ MPU Codec Library          | Evaluation Version V1.2.2 | [RTK0EF0045Z15001ZJ-v1.2.2_EN.zip](https://www.renesas.com/us/en/document/swo/rz-mpu-video-codec-library-evaluation-version-v122-rzg2l-and-rzv2l-rtk0ef0045z15001zj-v122xxzip?language=en&r=1844066) |
 | RZ/V2L DRP-AI Support Package | V7.50                     | [r11an0549ej0750-rzv2l-drpai-sp.zip](https://www.renesas.com/en/document/swo/drp-ai-open-source-packageosspkgrzvdrpaiv7507z) |
@@ -68,14 +68,14 @@ $ wget https://raw.githubusercontent.com/Avnet/meta-rzboard/rzboard_dunfell_5.10
 $ chmod a+x create_yocto_rz_src.sh
 $ ls ~/
 create_yocto_rz_src.sh                       RTK0EF0045Z0024AZJ-v3.0.6.zip
-r01an7254ej0200-rzv-multi-os-pkg.zip  RTK0EF0045Z13001ZJ-v1.2.2_EN.zip
+r01an7254ej0200-rzv-multi-os-pkg.zip         RTK0EF0045Z13001ZJ-v1.2.2_EN.zip
 r11an0549ej0750-rzv2l-drpai-sp.zip           RTK0EF0045Z15001ZJ-v1.2.2_EN.zip
 ```
 Run the script to generate **yocto_rzboard/** directory
 ```bash
 $ ./create_yocto_rz_src.sh
 $ ls yocto_rzboard/
-meta-gplv2         meta-qt5      meta-rz-features     poky
+extra  meta-gplv2         meta-qt5      meta-rz-features     poky
 meta-openembedded  meta-renesas  meta-virtualization      
 ```
 
@@ -85,7 +85,7 @@ meta-openembedded  meta-renesas  meta-virtualization
 
 ```bash
 $ cd ~/yocto_rzboard
-$ git clone https://github.com/Avnet/meta-rzboard.git -b rzboard_dunfell_5.10_201
+$ git clone https://github.com/Avnet/meta-rzboard.git -b rzboard_dunfell_5.10.201
 ```
 
 So far, all the yocto related sources are in place.
@@ -116,6 +116,14 @@ $ cd ~/yocto_rzboard/
 $ source poky/oe-init-build-env build/
 $ bitbake avnet-core-image
 ```
+
+*  ##### **Build SDK**
+```bash
+$ cd ~/yocto_rzboard/
+$ source poky/oe-init-build-env build/
+$ bitbake avnet-core-image -c populate_sdk
+```
+
 After the build is successfully completed, the output files will be located in build/tmp/deploy/images/rzboard/ directory.
 
 For more information about Edge Impulse, including installing Edge Impulse Linux CLI, please refer to [the link](https://docs.edgeimpulse.com/docs/development-platforms/officially-supported-cpu-gpu-targets/renesas-rz-v2l).
