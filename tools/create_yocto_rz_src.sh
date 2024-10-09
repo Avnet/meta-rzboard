@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=0.4.0
+VERSION=0.4.1
 
 # Make sure that the following packages have been downloaded from the official website
 # RZ/V Verified Linux Package [5.10-CIP]  V3.0.6
@@ -20,9 +20,8 @@ REN_VEDIO_CODEC_LIB_PKG_EVAL="RTK0EF0045Z15001ZJ-v1.2.2_EN"
 # RZ/V2L DRP-AI Support Package Version 7.50
 REN_V2L_DRPAI_PKG="r11an0549ej0750-rzv2l-drpai-sp"
 
-# RZ/V2L Multi-OS Package V1.20
-REN_V2L_MULTI_OS_PKG="r01an7254ej0200_rzv-multi-os-pkg"
-                   
+# RZ/V2L Multi-OS Package V2.1.0
+REN_V2L_MULTI_OS_PKG="r01an7254ej0210_rzv-multi-os-pkg"
 # ----------------------------------------------------------------
 
 WORKSPACE=$(pwd)
