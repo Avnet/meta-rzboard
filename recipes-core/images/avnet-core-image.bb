@@ -7,6 +7,12 @@ IMAGE_INSTALL_append = " \
     nodejs-npm \
     "
 
+# Wildcard to preferred version of nodejs to 14.x, as this version is
+# provided in meta-oe. 
+# Prefer higher versions compatible with Edge Impulse (we will want to bump this with future yocto updates)
+PREFERRED_VERSION_nodejs = "14.%"
+PREFERRED_VERSION_nodejs-npm = "14.%"
+
 # Package up images to release
 # Call with bitbake avnet-core-image -c release
 do_release() {
