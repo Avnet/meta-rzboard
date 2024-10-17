@@ -74,7 +74,6 @@ IMAGE_INSTALL_append = " \
 	drpai-app-demos \
 	usb-camera-http-demo \
 	rzboard-app-script \
-	rzboard-demo-launcher \
 "
 
 unzip_drpai_demo() {
