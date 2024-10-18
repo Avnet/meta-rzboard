@@ -5,7 +5,6 @@ This is a meta-layer for Avnet RzBoard.
 - Yocto dunfell 3.1.31 support:  Avnet RzBoard
 
 
-
 ## How to Build
 
 
@@ -28,7 +27,6 @@ Set Git configuration:
 $ git config --global user.name "Your Name"
 $ git config --global user.email "you@example.com"
 ```
-
 
 
 ### Fetch the source code
@@ -70,45 +68,17 @@ $ ls ~/
 create_yocto_rz_src.sh                       RTK0EF0045Z0024AZJ-v3.0.6.zip
 r01an7254ej0200-rzv-multi-os-pkg.zip         RTK0EF0045Z13001ZJ-v1.2.2_EN.zip
 r11an0549ej0750-rzv2l-drpai-sp.zip           RTK0EF0045Z15001ZJ-v1.2.2_EN.zip
+
 ```
-Run the script to generate **yocto_rzboard/** directory
+Run the script to generate **yocto_rzboard/** directory which contains all the necessary sources. This script will verify, extract, and patch essential files.
 ```bash
 $ ./create_yocto_rz_src.sh
 $ ls yocto_rzboard/
 extra  meta-gplv2         meta-qt5      meta-rz-features     poky
-meta-openembedded  meta-renesas  meta-virtualization      
+meta-openembedded  meta-renesas  meta-virtualization         RZV2L_VLP306_switch_to_nodejs_18.17.1.patch
 ```
-
-
-
-* ##### **Download meta-rzboard**
-
-```bash
-$ cd ~/yocto_rzboard
-$ git clone https://github.com/Avnet/meta-rzboard.git -b rzboard_dunfell_5.10.201
-```
-
-So far, all the yocto related sources are in place.
-
-```bash
-$ ls ~/yocto_rzboard
-meta-gplv2         meta-qt5      meta-rz-features  meta-virtualization
-meta-openembedded  meta-renesas  meta-rzboard      poky
-```
-
-
 
 ### Build a image
-
-*  ##### **Create build configuration**
-
-```bash
-$ cd ~/yocto_rzboard
-$ mkdir -p ./build/conf
-$ cp meta-rzboard/conf/rzboard/* build/conf/
-$ ls build/conf/
-bblayers.conf  local.conf  site.conf
-```
 
 *  ##### **Build**
 ```bash
