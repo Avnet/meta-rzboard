@@ -1,6 +1,6 @@
 #!/bin/bash
 
-VERSION=0.4.1
+VERSION=0.4.2
 
 # Make sure that the following packages have been downloaded from the official website
 # RZ/V Verified Linux Package [5.10-CIP]  V3.0.6
@@ -13,9 +13,9 @@ REN_GPU_MALI_LIB_PKG="RTK0EF0045Z14001ZJ-v1.2.2_rzv_EN"
 REN_GPU_MALI_LIB_PKG_EVAL="RTK0EF0045Z13001ZJ-v1.2.2_EN"
 
 # RZ MPU Video Codec Library V1.2.2 Unrestricted Version
-REN_VEDIO_CODEC_LIB_PKG="RTK0EF0045Z16001ZJ-v1.2.2_rzv_EN"
+REN_VIDEO_CODEC_LIB_PKG="RTK0EF0045Z16001ZJ-v1.2.2_rzv_EN"
 # RZ MPU Video Codec Library Evaluation Version V1.2.2
-REN_VEDIO_CODEC_LIB_PKG_EVAL="RTK0EF0045Z15001ZJ-v1.2.2_EN"
+REN_VIDEO_CODEC_LIB_PKG_EVAL="RTK0EF0045Z15001ZJ-v1.2.2_EN"
 
 # RZ/V2L DRP-AI Support Package Version 7.50
 REN_V2L_DRPAI_PKG="r11an0549ej0750-rzv2l-drpai-sp"
@@ -28,10 +28,18 @@ WORKSPACE=$(pwd)
 YOCTO_HOME="${WORKSPACE}/yocto_rzboard"
 
 function main_process(){
-	if [ ! -d ${YOCTO_HOME} ];then
-		mkdir -p ${YOCTO_HOME}
+	if [ ! -d "${YOCTO_HOME}" ];then
+		mkdir -p "${YOCTO_HOME}"
 	fi
 
+	echo "Establishing Yocto environment for RZBoard V2L. Script version: ${VERSION}"
+	echo "If any error occurs please:"
+	echo "  1) check package versions for accuracy,"
+	echo "  2) check git branch for compatibility,"
+	echo "  3) Ensure prerequisites sw/libs are met. See meta-rzboard README for details."
+	echo "  4) Rerun the script."
+	
+	set -ex
 	check_pkg_require
 	unpack_bsp
 	unpack_gpu
@@ -39,11 +47,9 @@ function main_process(){
 	unpack_drpai
 	unpack_multi_os
 	remove_redundant_patches
-	echo ""
-	echo "ls ${YOCTO_HOME}"
-	ls ${YOCTO_HOME}
-	echo ""
-	echo "---Finished---"
+	clone_meta_rzboard
+	setup_build_and_patch
+	set +ex
 }
 
 log_error(){
@@ -59,7 +65,7 @@ log_warn(){
 check_pkg_require(){
 	# check required pacakages are downloaded from Renesas website
 	local check=0
-	cd ${WORKSPACE}
+	cd "${WORKSPACE}"
 
 	if [ ! -e ${REN_LINUX_BSP_PKG}${SUFFIX_ZIP} ];then
 		log_error "Error: Cannot found ${REN_LINUX_BSP_PKG}${SUFFIX_ZIP} !"
@@ -77,13 +83,13 @@ check_pkg_require(){
 		log_warn "It is recommended to download 'MPU Graphics Library Unrestricted Version' from Renesas Website"
 		echo ""
 	fi
-	if [ ! -e ${REN_VEDIO_CODEC_LIB_PKG}${SUFFIX_ZIP} ] && [ ! -e ${REN_VEDIO_CODEC_LIB_PKG_EVAL}${SUFFIX_ZIP} ] ;then
-		log_error "Error: Cannot found ${REN_VEDIO_CODEC_LIB_PKG}${SUFFIX_ZIP} !"
+	if [ ! -e ${REN_VIDEO_CODEC_LIB_PKG}${SUFFIX_ZIP} ] && [ ! -e ${REN_VIDEO_CODEC_LIB_PKG_EVAL}${SUFFIX_ZIP} ] ;then
+		log_error "Error: Cannot found ${REN_VIDEO_CODEC_LIB_PKG}${SUFFIX_ZIP} !"
 		log_error "Please download 'RZ MPU Codec Library' from Renesas RZ/V2L Website"
 		echo ""
 		check=3
-	elif [ ! -e ${REN_VEDIO_CODEC_LIB_PKG}${SUFFIX_ZIP} ] && [ -e ${REN_VEDIO_CODEC_LIB_PKG_EVAL}${SUFFIX_ZIP}  ]; then
-		log_warn "This is an Evaluation Version package ${REN_VEDIO_CODEC_LIB_PKG_EVAL}${SUFFIX_ZIP}"
+	elif [ ! -e ${REN_VIDEO_CODEC_LIB_PKG}${SUFFIX_ZIP} ] && [ -e ${REN_VIDEO_CODEC_LIB_PKG_EVAL}${SUFFIX_ZIP}  ]; then
+		log_warn "This is an Evaluation Version package ${REN_VIDEO_CODEC_LIB_PKG_EVAL}${SUFFIX_ZIP}"
 		log_warn "It is recommended to download 'MPU Video Codec Library Unrestricted Version' from Renesas Website"
 		echo ""
 	fi   
@@ -112,16 +118,16 @@ function extract_to_meta(){
 	local tarfile=
 
 	echo ""
-	echo $zipfile $zipdir
-	echo $tarfile_tmp $tardir
+	echo "$zipfile $zipdir"
+	echo "$tarfile_tmp $tardir"
 
-	cd ${WORKSPACE}
+	cd "${WORKSPACE}"
 	pwd
 	echo "Extract zip file to ${zipdir} and then untar ${tarfile_tmp} file"
-	unzip -d ${zipdir} ${zipfile}
-	tarfile=$(find ${zipdir} -type f -name ${tarfile_tmp})
-	echo "TAR: "${tarfile}
-	tar -xzf ${tarfile} -C ${tardir}
+	unzip -d "${zipdir}" "${zipfile}"
+	tarfile=$(find "${zipdir}" -type f -name "${tarfile_tmp}")
+	echo "TAR: \"${tarfile}\""
+	tar -xzf "${tarfile}" -C "${tardir}"
 	sync
 }
 
@@ -131,13 +137,13 @@ function unpack_bsp(){
 	local bsp="rzv*_v*.tar.gz"
 	local bsp_patch=""
 
-	extract_to_meta ${pkg_file} ${zip_dir} ${bsp} ${YOCTO_HOME}
-	bsp_patch=$(find ${zip_dir} -type f -name "rzv*.patch")
+	extract_to_meta "$pkg_file" "$zip_dir" "$bsp" "$YOCTO_HOME"
+	bsp_patch=$(find "${zip_dir}" -type f -name "rzv*.patch")
 	if [ -n "${bsp_patch}" ]; then
-		echo ${bsp_patch}
-		patch -d ${YOCTO_HOME} -p1 < ${bsp_patch}
+		echo "${bsp_patch}"
+		patch -d "${YOCTO_HOME}" -p1 < "${bsp_patch}"
 	fi
-	rm -fr ${zip_dir}
+	rm -fr "${zip_dir}"
 }
 
 function unpack_gpu(){
@@ -149,20 +155,20 @@ function unpack_gpu(){
 		pkg_file=${WORKSPACE}/${REN_GPU_MALI_LIB_PKG_EVAL}${SUFFIX_ZIP}
 	fi
 
-	extract_to_meta ${pkg_file} ${zip_dir} ${gpu} ${YOCTO_HOME}
-	rm -fr ${zip_dir}
+	extract_to_meta "${pkg_file}" "${zip_dir}" "${gpu}" "${YOCTO_HOME}"
+	rm -fr "${zip_dir}"
 }
 
 function unpack_codec(){
-	local pkg_file=${WORKSPACE}/${REN_VEDIO_CODEC_LIB_PKG}${SUFFIX_ZIP}
-	local zip_dir="REN_VEDIO_CODEC"
+	local pkg_file=${WORKSPACE}/${REN_VIDEO_CODEC_LIB_PKG}${SUFFIX_ZIP}
+	local zip_dir="REN_VIDEO_CODEC"
 	local codec="meta-rz*_v*.tar.gz"
 
-	if [ ! -e ${REN_VEDIO_CODEC_LIB_PKG}${SUFFIX_ZIP} ]; then
-		pkg_file=${WORKSPACE}/${REN_VEDIO_CODEC_LIB_PKG_EVAL}${SUFFIX_ZIP}
+	if [ ! -e ${REN_VIDEO_CODEC_LIB_PKG}${SUFFIX_ZIP} ]; then
+		pkg_file=${WORKSPACE}/${REN_VIDEO_CODEC_LIB_PKG_EVAL}${SUFFIX_ZIP}
 	fi
 
-	extract_to_meta ${pkg_file} ${zip_dir} ${codec} ${YOCTO_HOME}
+	extract_to_meta "${pkg_file}" "${zip_dir}" "${codec}" "${YOCTO_HOME}"
 	rm -fr ${zip_dir}
 }
 
@@ -171,7 +177,7 @@ function unpack_drpai(){
 	local zip_dir="REN_V2L_DRPAI"
 	local drpai="meta-rz*.tar.gz"
 
-	extract_to_meta ${pkg_file} ${zip_dir} ${drpai} ${YOCTO_HOME}
+	extract_to_meta "${pkg_file}" "${zip_dir}" "${drpai}" "${YOCTO_HOME}"
 	rm -fr ${zip_dir}
 }
 
@@ -180,26 +186,50 @@ function unpack_multi_os(){
 	local zip_dir="REN_MULTI_OS"
 	local rtos="meta-rz*.tar.gz"
 
-	extract_to_meta ${pkg_file} ${zip_dir} ${rtos} ${YOCTO_HOME}
+	extract_to_meta "${pkg_file}" "${zip_dir}" "${rtos}" "${YOCTO_HOME}"
 	rm -fr ${zip_dir}
 }
 
 function remove_redundant_patches(){
 	# remove linux patches that were merged into the Avnet kernel
-	flist=$(find ${YOCTO_HOME} -name "linux-renesas_*.bbappend")
+	flist=$(find "${YOCTO_HOME}" -name "linux-renesas_*.bbappend")
 	for ff in ${flist}
 	do
-		echo ${ff}
-		rm -rf ${ff}
+		echo "${ff}"
+		rm -rf "${ff}"
 	done
 
 	# remove u-boot patches
-	find ${YOCTO_HOME} -name "u-boot_*.bbappend" -print -exec rm -rf {} \;
+	find "${YOCTO_HOME}" -name "u-boot_*.bbappend" -print -exec rm -rf {} \;
 
 	# remove tfa patches
-	find ${YOCTO_HOME} -name "trusted-firmware-a.bbappend" -print -exec mv {} {}.remove \;
+	find "${YOCTO_HOME}" -name "trusted-firmware-a.bbappend" -print -exec mv {} {}.remove \;
+}
+
+function clone_meta_rzboard(){
+	git clone https://github.com/Avnet/meta-rzboard.git -b rzboard_dunfell_5.10.201
+	mv meta-rzboard "${YOCTO_HOME}"
+
+}
+
+function setup_build_and_patch(){
+	cd "${YOCTO_HOME}"
+
+	echo "Creating build folder with suitable configuration"
+	mkdir -p ./build/conf
+	cp meta-rzboard/conf/rzboard/* build/conf/
+
+	echo "ls ./build/conf"
+	ls ./build/conf
+
+	echo "Patching some meta layers to support Node 18"
+	cp meta-rzboard/RZV2L_VLP306_switch_to_nodejs_18.17.1.patch .
+	patch -p1 < ./RZV2L_VLP306_switch_to_nodejs_18.17.1.patch
+
+	echo "Build environment established. Please refer to the README.md for build instructions."
+	echo "For a quickstart, 'source poky/oe-init-build-env' then run 'bitbake rzboard-image'."
 }
 
 #---start--------
-main_process $*
+main_process "$*"
 exit
