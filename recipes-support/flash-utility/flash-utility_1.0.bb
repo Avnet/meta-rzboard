@@ -5,9 +5,8 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/MIT;md5=0835ade698e0bcf8506ecda
 
 SRC_URI = "git://github.com/avnet/rzboard_flash_util.git;branch=main;"
 
-# Modify these as desired
-PV = "1.0.0+git${SRCPV}"
-SRCREV = "2d6b78c42330fffbd0b045dce473e5aaa6026fcc"
+PV = "1.0.1+git${SRCPV}"
+SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git"
 

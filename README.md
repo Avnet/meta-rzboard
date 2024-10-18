@@ -44,8 +44,8 @@ The following packages should be download:
 | RZ/V Verified Linux Package   | V3.0.6            | [RTK0EF0045Z0024AZJ-v3.0.6.zip](https://www.renesas.com/en/document/swo/rzv-verified-linux-package-v306rtk0ef0045z0024azj-v306zip?r=1628526) |
 | RZ MPU Graphics Library       | Evaluation Version V1.2.2 | [RTK0EF0045Z13001ZJ-v1.2.2_EN.zip](https://www.renesas.com/us/en/document/swo/rz-mpu-graphics-library-evaluation-version-v122-rzg2l-rzg2lc-and-rzv2l-rtk0ef0045z13001zj-v122xxzip?language=en&r=1843541) |
 | RZ MPU Codec Library          | Evaluation Version V1.2.2 | [RTK0EF0045Z15001ZJ-v1.2.2_EN.zip](https://www.renesas.com/us/en/document/swo/rz-mpu-video-codec-library-evaluation-version-v122-rzg2l-and-rzv2l-rtk0ef0045z15001zj-v122xxzip?language=en&r=1844066) |
-| RZ/V2L DRP-AI Support Package | V7.50                     | [r11an0549ej0750-rzv2l-drpai-sp.zip](https://www.renesas.com/en/document/swo/drp-ai-open-source-packageosspkgrzvdrpaiv7507z) |
-| RZ/V2L Multi-OS Package       | V2.0.0                   | [r01an7254ej0200-rzv2l-multi-os-pkg.zip](https://www.renesas.com/us/en/document/sws/rzv-multi-os-package-v200?language=en&r=1570181) |
+| RZ/V2L DRP-AI Support Package | V7.50                     | [r11an0549ej0750-rzv2l-drpai-sp.zip](https://www.renesas.com/en/document/sws/rzv2l-drp-ai-support-package-version-750?r=1558356) |
+| RZ/V2L Multi-OS Package       | V2.0.0                   | [r01an7254ej0200-rzv2l-multi-os-pkg.zip](https://www.renesas.com/en/document/sws/rzv-multi-os-package-v210?r=1570181) |
 
 > ***Note***:   
 > *1  The Renesas website provides two version packages, "**Evaluation Version**" and "**Unrestricted Version**", for each of the RZ MPU Graphics Library and the RZ MPU Codec Library.*  
