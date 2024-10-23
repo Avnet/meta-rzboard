@@ -8,6 +8,7 @@ IMAGE_INSTALL_append = " \
     "
 
 # Package up images to release
+# Call with bitbake avnet-core-image -c release
 do_release() {
     # Variables
     RZ_IMAGES_DIR=${DEPLOY_DIR}/images/rzboard
@@ -27,12 +28,18 @@ do_release() {
     cp ${RZ_IMAGES_DIR}/bl2_bp-rzboard.srec ${RELEASE_DIR}
     cp ${RZ_IMAGES_DIR}/Flash_Writer_SCIF_rzboard.mot ${RELEASE_DIR}
     cp ${RZ_IMAGES_DIR}/avnet-core-image-rzboard.wic ${RELEASE_DIR}
+
+    # Flash util essentials
     cp ${RZ_IMAGES_DIR}/requirements.txt ${RELEASE_DIR}
-    cp ${RZ_IMAGES_DIR}/flash_util.py ${RELEASE_DIR}
+    cp -r ${RZ_IMAGES_DIR}/flash_utils ${RELEASE_DIR}
+    cp ${RZ_IMAGES_DIR}/flash_rzboard.py ${RELEASE_DIR}
     cp ${RZ_IMAGES_DIR}/adb/*.zip ${RELEASE_DIR}/adb
+
     cp ${RZ_IMAGES_DIR}/avnet-core-image-rzboard.manifest ${RELEASE_DIR}/
 
     tar -zcf ${RZ_IMAGES_DIR}/release.tar.gz -C ${RZ_IMAGES_DIR} release
+
+    bbnote "Release package created at ${RZ_IMAGES_DIR}/release.tar.gz"
 }
 
 addtask release
